@@ -1,22 +1,13 @@
--- MySQL Workbench Forward Engineering
+
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema Asistente_financiero
--- -----------------------------------------------------
 
--- -----------------------------------------------------
--- Schema Asistente_financiero
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `Asistente_financiero` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 USE `Asistente_financiero` ;
 
--- -----------------------------------------------------
--- Table `Asistente_financiero`.`Usuarios`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Usuarios` (
   `idUsuarios` INT(11) NOT NULL AUTO_INCREMENT,
   `usuEstado` TINYINT(1) NOT NULL,
@@ -35,9 +26,6 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 
 
--- -----------------------------------------------------
--- Table `Asistente_financiero`.`Cuentas`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Cuentas` (
   `idCuentas` INT(11) NOT NULL,
   `Usuarios_idUsuarios` INT(11) NOT NULL,
@@ -49,8 +37,8 @@ CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Cuentas` (
   `cueCreated` TIMESTAMP NULL,
   `cueUpdate` TIMESTAMP NULL,
   PRIMARY KEY (`idCuentas`),
-  UNIQUE INDEX `cueNombre_UNIQUE` (`cueNombre` ASC) VISIBLE,
-  INDEX `fk_Cuentas_Usuarios1_idx` (`Usuarios_idUsuarios` ASC) VISIBLE,
+  UNIQUE INDEX `cueNombre_UNIQUE` (`cueNombre` ASC),
+  INDEX `fk_Cuentas_Usuarios1_idx` (`Usuarios_idUsuarios` ASC),
   CONSTRAINT `fk_Cuentas_Usuarios1`
     FOREIGN KEY (`Usuarios_idUsuarios`)
     REFERENCES `Asistente_financiero`.`Usuarios` (`idUsuarios`)
@@ -60,9 +48,6 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 
 
--- -----------------------------------------------------
--- Table `Asistente_financiero`.`balances`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`balances` (
   `idBalances` INT(11) NOT NULL,
   `Usuarios_idUsuarios` INT(11) NOT NULL,
@@ -72,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`balances` (
   `balCreated` TIMESTAMP NULL,
   `balUpdate` TIMESTAMP NULL,
   PRIMARY KEY (`idBalances`),
-  INDEX `fk_balances_Usuarios1_idx` (`Usuarios_idUsuarios` ASC) VISIBLE,
+  INDEX `fk_balances_Usuarios1_idx` (`Usuarios_idUsuarios` ASC),
   CONSTRAINT `fk_balances_Usuarios1`
     FOREIGN KEY (`Usuarios_idUsuarios`)
     REFERENCES `Asistente_financiero`.`Usuarios` (`idUsuarios`)
@@ -82,9 +67,7 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 
 
--- -----------------------------------------------------
--- Table `Asistente_financiero`.`Movimientos`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Movimientos` (
   `idMovimientos` INT(11) NOT NULL,
   `Usuarios_idUsuarios` INT(11) NOT NULL,
@@ -101,10 +84,10 @@ CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Movimientos` (
   `movCreated` TIMESTAMP NULL,
   `movUpdate` TIMESTAMP NULL,
   PRIMARY KEY (`idMovimientos`),
-  UNIQUE INDEX `movNumero_UNIQUE` (`movNumero` ASC) VISIBLE,
-  INDEX `fk_Movimientos_Usuarios_idx` (`Usuarios_idUsuarios` ASC) VISIBLE,
-  INDEX `fk_Movimientos_Cuentas1_idx` (`Cuentas_idCuentas` ASC) VISIBLE,
-  INDEX `fk_Movimientos_balances1_idx` (`balances_idBalances` ASC) VISIBLE,
+  UNIQUE INDEX `movNumero_UNIQUE` (`movNumero` ASC),
+  INDEX `fk_Movimientos_Usuarios_idx` (`Usuarios_idUsuarios` ASC),
+  INDEX `fk_Movimientos_Cuentas1_idx` (`Cuentas_idCuentas` ASC),
+  INDEX `fk_Movimientos_balances1_idx` (`balances_idBalances` ASC),
   CONSTRAINT `fk_Movimientos_Usuarios`
     FOREIGN KEY (`Usuarios_idUsuarios`)
     REFERENCES `Asistente_financiero`.`Usuarios` (`idUsuarios`)
@@ -124,9 +107,7 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 
 
--- -----------------------------------------------------
--- Table `Asistente_financiero`.`Soportes`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Soportes` (
   `idSoportes` INT(11) NOT NULL,
   `Movimientos_idMovimientos` INT(11) NOT NULL,
@@ -137,8 +118,8 @@ CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Soportes` (
   `sopCreated` TIMESTAMP NULL,
   `sopUpdate` TIMESTAMP NULL,
   PRIMARY KEY (`idSoportes`),
-  UNIQUE INDEX `sopNomComprobante_UNIQUE` (`sopNomComprobante` ASC) VISIBLE,
-  INDEX `fk_Soportes_Movimientos1_idx` (`Movimientos_idMovimientos` ASC) VISIBLE,
+  UNIQUE INDEX `sopNomComprobante_UNIQUE` (`sopNomComprobante` ASC),
+  INDEX `fk_Soportes_Movimientos1_idx` (`Movimientos_idMovimientos` ASC),
   CONSTRAINT `fk_Soportes_Movimientos1`
     FOREIGN KEY (`Movimientos_idMovimientos`)
     REFERENCES `Asistente_financiero`.`Movimientos` (`idMovimientos`)
@@ -148,9 +129,7 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 
 
--- -----------------------------------------------------
--- Table `Asistente_financiero`.`Calendarios`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Calendarios` (
   `idCalendarios` INT(11) NOT NULL,
   `Usuarios_idUsuarios` INT(11) NOT NULL,
@@ -163,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Calendarios` (
   `calCreated` TIMESTAMP NULL,
   `calUpdate` TIMESTAMP NULL,
   PRIMARY KEY (`idCalendarios`),
-  INDEX `fk_Calendarios_Usuarios1_idx` (`Usuarios_idUsuarios` ASC) VISIBLE,
+  INDEX `fk_Calendarios_Usuarios1_idx` (`Usuarios_idUsuarios` ASC),
   CONSTRAINT `fk_Calendarios_Usuarios1`
     FOREIGN KEY (`Usuarios_idUsuarios`)
     REFERENCES `Asistente_financiero`.`Usuarios` (`idUsuarios`)
@@ -173,9 +152,7 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 
 
--- -----------------------------------------------------
--- Table `Asistente_financiero`.`Ayudas`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Ayudas` (
   `idAyudas` INT(11) NOT NULL,
   `Usuarios_idUsuarios` INT(11) NOT NULL,
@@ -187,8 +164,8 @@ CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Ayudas` (
   `ayuCreated` TIMESTAMP NULL,
   `ayuUpdate` TIMESTAMP NULL,
   PRIMARY KEY (`idAyudas`),
-  UNIQUE INDEX `ayuCodigoConsejo_UNIQUE` (`ayuCodigoConsejo` ASC) VISIBLE,
-  INDEX `fk_Ayudas_Usuarios1_idx` (`Usuarios_idUsuarios` ASC) VISIBLE,
+  UNIQUE INDEX `ayuCodigoConsejo_UNIQUE` (`ayuCodigoConsejo` ASC),
+  INDEX `fk_Ayudas_Usuarios1_idx` (`Usuarios_idUsuarios` ASC),
   CONSTRAINT `fk_Ayudas_Usuarios1`
     FOREIGN KEY (`Usuarios_idUsuarios`)
     REFERENCES `Asistente_financiero`.`Usuarios` (`idUsuarios`)
