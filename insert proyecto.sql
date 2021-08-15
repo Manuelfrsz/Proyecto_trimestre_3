@@ -33,3 +33,18 @@ values
 (7, 3, 7, 3, 1, 7, 'Compra', 'Canilleras y tenis', 'Bolsillo Oscar', 100000, '2021-09-03'),
 (8, 2, 2, 2, 1, 8, 'Retiro', 'Retiro 150000', 'Ahorros banco Bogota', 150000, '2021-09-07'),
 (9, 2, 4, 2, 1, 9, 'Ingreso', 'Sumo el retiro', 'billetera luis', 150000, '2021-09-07');
+
+insert into `soportes`(`idsoportes` , `Movimientos_idMovimientos` , `sopEstado` , `sopNomComprobante`)
+values 
+(1, 1, 1, 'pago sueldo luis'),
+(2, 2, 1, 'pago sueldo Manuel'),
+(3, 3, 1, 'pago sueldo oscar'),
+(4, 4, 1, 'Compra cel y billetera'),
+(5, 5, 1, 'cuota computador'),
+(6, 6, 1, 'cuota paga pc'),
+(7, 7, 1, 'compra canill y tenis'),
+(8, 8, 1, '150000 retiro'),
+(9, 9, 1, 'ingreso a Billetera');
+
+
+ 
