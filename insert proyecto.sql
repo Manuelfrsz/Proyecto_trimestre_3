@@ -33,3 +33,16 @@ values
 (7, 3, 7, 3, 1, 7, 'Compra', 'Canilleras y tenis', 'Bolsillo Oscar', 100000, '2021-09-03'),
 (8, 2, 2, 2, 1, 8, 'Retiro', 'Retiro 150000', 'Ahorros banco Bogota', 150000, '2021-09-07'),
 (9, 2, 4, 2, 1, 9, 'Ingreso', 'Sumo el retiro', 'billetera luis', 150000, '2021-09-07');
+
+insert into `calendarios`(`idcalendarios`, `Usuarios_idUsuarios`, `calEstado`, `calTipoPago`, `calNomPago`, `calFechaPago`)
+values
+(1, 1, 1, 'Sueldo', 'cobro nomina Manuel','2021-09-25'),
+(2, 2, 1, 'Sueldo', 'cobro nomina Luis','2021-09-25'),
+(3, 3, 1, 'Sueldo', 'cobro nomina oscar','2021-09-25'),
+(4, 1, 1, 'Pago Cuota', 'Cuota del computador','2021-09-30'),
+(5, 1, 1, 'compra', 'compra comida animales','2021-10-01'),
+(6, 2, 1, 'Pago Servicio', 'pago resivo de la luz', '2021-09-15'),
+(7, 3, 1, 'pago servicio', 'pagar resivo de gas','2021-09-17'),
+(8, 2, 1, 'pago servicio', 'pago internet hogar','2021-09-20'),
+(9, 1, 1, 'pago servicio', 'pagar plan de datos','2021-09-25'),
+(10, 3, 1, 'compra', 'comprar regalo amigo','2021-09-30');

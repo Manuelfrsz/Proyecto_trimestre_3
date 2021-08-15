@@ -137,7 +137,6 @@ CREATE TABLE IF NOT EXISTS `Asistente_financiero`.`Calendarios` (
   `calTipoPago` VARCHAR(20) NOT NULL,
   `calNomPago` VARCHAR(20) NOT NULL,
   `calFechaPago` DATE NOT NULL,
-  `calFechaCobroNomina` DATE NOT NULL,
   `calUsuSesion` VARCHAR(45) NULL,
   `calCreated` TIMESTAMP NULL,
   `calUpdate` TIMESTAMP NULL,
