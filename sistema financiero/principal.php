@@ -10,19 +10,19 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style type="text/css">
 		 #provisional{
-			 width: 80%;
+			 width: 95%;
 			 border: black 3px solid;
 			 margin-left: auto;
 			 margin-right: auto;			 
 		 }
 		 .gestion{
-			 width: 80%;
+			 width: 90%;
 			 border: black 3px solid;
 			 margin-left: auto;
 			 margin-right: auto;			 
 		 }
 		 #contenido{
-			 width: 80%;
+			 width: 90%;
 			 border: black 3px solid;
 			 margin-left: auto;
 			 margin-right: auto;			 
@@ -46,7 +46,7 @@ session_start();
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Cuentas
 	 <br/>
-	 <a href="">Listar Cuentas</a>
+	 <a href="Controlador.php?ruta=listarCuentas&pag=0">Listar Cuentas</a>
      <br/>
      <a href="">Agregar Cuentas</a>   	 
 	 </div>
