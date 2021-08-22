@@ -52,7 +52,7 @@ session_start();
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Balances
 	 <br/>
-	 <a href="">Listar Balances</a>
+	 <a href="Controlador.php?ruta=listarBalances&pag=0">Listar Balances</a>
      <br/>
      <a href="">Agregar Balances</a>   	 
 	 </div>
