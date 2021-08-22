@@ -3,9 +3,8 @@
 include_once PATH . 'controladores/LibrosControlador.php';
 include_once PATH . 'controladores/usuariosControlador.php';
 include_once PATH . 'controladores/cuentasControlador.php';
-
-
 include_once PATH . 'controladores/balancesControlador.php';
+
 class ControladorPrincipal {
 
     private $datos = array();
@@ -100,9 +99,6 @@ class ControladorPrincipal {
     public function listarUsuarios() {
         $usuariosControlador = new usuariosControlador($this->datos);
     }
-    public function listarCuentas() {
-        $cuentasControlador = new cuentasControlador($this->datos);
-    }
 
     public function actualizarUsuarios() {
         $usuariosControlador = new usuariosControlador($this->datos);
@@ -112,6 +108,7 @@ class ControladorPrincipal {
 
         $usuariosControlador = new usuariosControlador($this->datos);
     }
+
     public function listarBalances() {
         $balancesControlador = new balancesControlador($this->datos);
     }
@@ -123,6 +120,10 @@ class ControladorPrincipal {
     public function confirmaActualizarBalances() {
 
         $balancesControlador = new balancesControlador($this->datos);
+    }
+
+    public function listarCuentas() {
+        $cuentasControlador = new cuentasControlador($this->datos);
     }
 
     public function actualizarCuentas() {
