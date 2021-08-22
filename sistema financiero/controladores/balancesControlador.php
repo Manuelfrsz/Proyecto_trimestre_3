@@ -1,35 +1,35 @@
 <?php
 
-include_once PATH . 'modelos/modeloLibros/LibroDAO.php';
+include_once PATH . 'modelos/modeloBalances/balancesDAO.php';
 
-class LibrosControlador {
+class balancesControlador {
 
     private $datos;
 
     public function __construct($datos) {
         $this->datos = $datos;
-        $this->librosControlador();
+        $this->balancesControlador();
     }
 
-    public function librosControlador() {
+    public function balancesControlador() {
         switch ($this->datos['ruta']) {
-            case "listarLibros": //provisionalmente para trabajar con datatables
-                $this->listarLibros();
+            case "listarBalances": //provisionalmente para trabajar con datatables
+                $this->listarBalances();
                 break;
         }
     }
 
-    public function listarLibros() {
+    public function listarBalances() {
 
-        $gestarLibros = new LibroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
-        $registroLibros = $gestarLibros->seleccionarTodos();
+        $gestarBalances = new balancesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $registroBalances = $gestarBalances->seleccionarTodos();
 
         session_start();
 
         //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS IMPRIMA O UTILICE//
-        $_SESSION['listaDeLibros'] = $registroLibros;
+        $_SESSION['listaDeBalances'] = $registroBalances;
 
-        header("location:principal.php?contenido=vistas/vistasLibros/listarDTRegistrosLibros.php");
+        header("location:principal.php?contenido=vistas/vistasBalances/listarDTRegistrosBalances.php");
     }
 
 }
