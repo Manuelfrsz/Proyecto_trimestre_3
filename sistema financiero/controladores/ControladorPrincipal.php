@@ -1,7 +1,7 @@
 <?php
 
 include_once PATH . 'controladores/LibrosControlador.php';
-
+include_once PATH . 'controladores/balancesControlador.php';
 class ControladorPrincipal {
 
     private $datos = array();
@@ -33,6 +33,20 @@ class ControladorPrincipal {
             case "confirmaActualizarLibro":
                 $this->confirmaActualizarLibro();
                 break;
+
+            case "listarBalances":
+                $this->listarBalances();
+                break;
+            case "actualizarBalances":
+    
+                $this->actualizarBalances();
+    
+                break;
+    
+            case "confirmaActualizarBalances":
+                $this->confirmaActualizarBalances();
+                break;    
+                
         }
     }
 
@@ -47,6 +61,19 @@ class ControladorPrincipal {
     public function confirmaActualizarLibro() {
 
         $librosControlador = new LibrosControlador($this->datos);
+    }
+
+    public function listarBalances() {
+        $balancesControlador = new balancesControlador($this->datos);
+    }
+
+    public function actualizarBalances() {
+        $balancesControlador = new balancesControlador($this->datos);
+    }
+
+    public function confirmaActualizarBalances() {
+
+        $balancesControlador = new balancesControlador($this->datos);
     }
 
 }
