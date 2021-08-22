@@ -1,6 +1,8 @@
 <?php
 
 include_once PATH . 'controladores/LibrosControlador.php';
+include_once PATH . 'controladores/usuariosControlador.php';
+
 
 class ControladorPrincipal {
 
@@ -24,6 +26,7 @@ class ControladorPrincipal {
             case "listarLibros":
                 $this->listarLibros();
                 break;
+            
             case "actualizarLibro":
 
                 $this->actualizarLibro();
@@ -33,6 +36,22 @@ class ControladorPrincipal {
             case "confirmaActualizarLibro":
                 $this->confirmaActualizarLibro();
                 break;
+
+                case "listarUsuarios":
+                    $this->listarUsuarios();
+                    break;
+                
+                case "actualizarUsuarios":
+    
+                    $this->actualizarUsuarios();
+    
+                    break;
+    
+                case "confirmaActualizarUsuario":
+                    $this->confirmaActualizarUsuarios();
+                    break;
+            
+            
         }
     }
 
@@ -48,7 +67,19 @@ class ControladorPrincipal {
 
         $librosControlador = new LibrosControlador($this->datos);
     }
+    
+    public function listarUsuarios() {
+        $usuariosControlador = new usuariosControlador($this->datos);
+    }
 
+    public function actualizarUsuarios() {
+        $usuariosControlador = new usuariosControlador($this->datos);
+    }
+
+    public function confirmaActualizarUsuarios() {
+
+        $usuariosControlador = new usuariosControlador($this->datos);
+    }
 }
 
 ?>
