@@ -1,7 +1,7 @@
 <?php
 
-//include_once "../modelos/ConstantesConexion.php";
-//include_once PATH."modelos/ConBdMysql.php";
+include_once "../modelos/ConstantesConexion.php";
+include_once PATH."modelos/ConBdMysql.php";
 
 class calendariosDAO extends ConBdMySql{
     public function __construct($servidor, $base, $loginBD, $passwordBD){
@@ -9,8 +9,9 @@ class calendariosDAO extends ConBdMySql{
     }
     
     public function seleccionarTodos(){
-        $planconsulta = " select c.idCalendarios, c.Usuarios_idUsuarios, c.calTipoPago, c.calNomPago, c.calFechaPago ";
+        $planconsulta = " select c.idCalendarios, u.usuNombres, u.usuApellidos, c.calTipoPago, c.calNomPago, c.calFechaPago ";
         $planconsulta.=" from calendarios c ";
+        $planconsulta.=" join usuarios u on c.Usuarios_idUsuarios = u.idUsuarios ";
     
 
         $registroCalendarios = $this->conexion->prepare($planconsulta);
