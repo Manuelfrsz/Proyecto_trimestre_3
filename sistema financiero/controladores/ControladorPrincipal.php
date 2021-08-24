@@ -5,6 +5,7 @@ include_once PATH . 'controladores/usuariosControlador.php';
 include_once PATH . 'controladores/cuentasControlador.php';
 include_once PATH . 'controladores/balancesControlador.php';
 include_once PATH . 'controladores/soportesControlador.php';
+include_once PATH . 'controladores/ayudasControlador.php';
 
 class ControladorPrincipal {
 
@@ -91,6 +92,19 @@ class ControladorPrincipal {
             case "confirmaActualizarSoportes":
                 $this->confirmaActualizarSoportes();
                 break;
+
+
+            case "listarAyudas":
+                $this->listarAyudas();
+                break;
+
+            case "actualizarAyudas":
+                $this->actualizarAyudas();
+                break;
+
+            case "confirmaActualizarAyudas":
+                $this->confirmaActualizarAyudas();
+                break;
         }
     }
 
@@ -157,6 +171,19 @@ class ControladorPrincipal {
     public function confirmaActualizarSoportes() {
 
         $SoportesControlador = new SoportesControlador($this->datos);
+    }
+
+    public function listarAyudas() {
+        $AyudasControlador = new AyudasControlador($this->datos);
+    }
+
+    public function actualizarAyudas() {
+        $AyudasControlador = new AyudasControlador($this->datos);
+    }
+
+    public function confirmaActualizarAyudas() {
+
+        $AyudasControlador = new AyudasControlador($this->datos);
     }
 }
 

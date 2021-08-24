@@ -1,35 +1,35 @@
 <?php
 
-include_once PATH . 'modelos/modeloLibros/LibroDAO.php';
+include_once PATH . 'modelos/modeloAyudas/AyudasDAO.php';
 
-class LibrosControlador {
+class AyudasControlador {
 
     private $datos;
 
     public function __construct($datos) {
         $this->datos = $datos;
-        $this->librosControlador();
+        $this->AyudasControlador();
     }
 
-    public function librosControlador() {
+    public function AyudasControlador() {
         switch ($this->datos['ruta']) {
-            case "listarLibros": //provisionalmente para trabajar con datatables
-                $this->listarLibros();
+            case "listarAyudas": //provisionalmente para trabajar con datatables
+                $this->listarAyudas();
                 break;
         }
     }
 
-    public function listarLibros() {
+    public function listarAyudas() {
 
-        $gestarLibros = new LibroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
-        $registroLibros = $gestarLibros->seleccionarTodos();
+        $gestarAyudas = new AyudasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $registroAyudas = $gestarAyudas->seleccionarTodos();
 
         session_start();
 
         //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS IMPRIMA O UTILICE//
-        $_SESSION['listaDeLibros'] = $registroLibros;
+        $_SESSION['listaDeAyudas'] = $registroAyudas;
 
-        header("location:principal.php?contenido=vistas/vistasLibros/listarDTRegistrosLibros.php");
+        header("location:principal.php?contenido=vistas/vistasAyudas/listarDTRegistrosAyudas.php");
     }
 
 }

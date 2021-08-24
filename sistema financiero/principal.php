@@ -76,7 +76,7 @@ session_start();
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Ayudas
 	 <br/>
-	 <a href="">Listar Ayudas</a>
+	 <a href="Controlador.php?ruta=listarAyudas&pag=0">Listar Ayudas</a>
      <br/>
      <a href="">Agregar Ayudas</a>   	 
 	 </div>
