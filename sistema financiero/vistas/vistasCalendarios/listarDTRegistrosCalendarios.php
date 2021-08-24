@@ -1,6 +1,6 @@
 <?php
 //echo "<pre>";
-//print_r($_SESSION['listaDeLibros']);
+//print_r($_SESSION['listaDeCalendarios']);
 //echo "</pre>";
 ?>
 <!DOCTYPE html>
@@ -21,22 +21,22 @@
 	
 	<body>
 <?php
-if(isset($_SESSION['listaDeLibros'])){
+if(isset($_SESSION['listaDeCalendarios'])){
 	
-	 $listaDeLibros=$_SESSION['listaDeLibros'];
-	 unset($_SESSION['listaDeLibros']);
+	 $listaDeCalendarios=$_SESSION['listaDeCalendarios'];
+	 unset($_SESSION['listaDeCalendarios']);
 	
 }
 ?>
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Isbn</th> 
-                <th>Titulo</th> 
-                <th>Autor</th> 
-                <th>Precio</th> 
-                <!--<th>Estado</th>--> 
-                <th>Categoria</th> 
+                <th>idCalendarios</th> 
+                <th>Nombres del Usuario</th>
+                <th>Apellidos del Usuario</th>  
+                <th>Tipo de Pago</th> 
+                <th>Nombre de Pago</th> 
+                <th>Fecha de Pago</th> 
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -44,22 +44,23 @@ if(isset($_SESSION['listaDeLibros'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listaDeLibros as $key => $value) {
+            foreach ($listaDeCalendarios as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeLibros[$i]->isbn; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->titulo; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->autor; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->precio; ?></td>  
-                    <!--<td>d>-->  
-                    <td><?php echo $listaDeLibros[$i]->catLibNombre; ?></td>  
-                    <td><a href="Controlador.php?ruta=actualizarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><?php echo $listaDeCalendarios[$i]->idCalendarios; ?></td>  
+                    <td><?php echo $listaDeCalendarios[$i]->usuNombres; ?></td>
+                    <td><?php echo $listaDeCalendarios[$i]->usuApellidos; ?></td> 
+                    <td><?php echo $listaDeCalendarios[$i]->calTipoPago; ?></td>  
+                    <td><?php echo $listaDeCalendarios[$i]->calNomPago; ?></td>    
+                    <td><?php echo $listaDeCalendarios[$i]->calFechaPago; ?></td>  
+                    
+                    <td><a href="Controlador.php?ruta=actualizarCalendario&idAct=<?php echo $listaDeCalendarios[$i]->idCalendarios; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarCalendario&idAct=<?php echo $listaDeCalendarios[$i]->idCalendarios; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listaDeLibros=null;
+            $listaDeCalendarios=null;
             ?>
         </tbody>
     </table>

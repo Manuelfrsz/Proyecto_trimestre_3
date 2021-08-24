@@ -1,14 +1,7 @@
 <?php
 //echo "<pre>";
-//print_r($_SESSION['listaDeLibros']);
+//print_r($_SESSION['listaDeSoportes']);
 //echo "</pre>";
-
-if (isset($_SESSION['mensaje'])) {
-    $mensaje = $_SESSION['mensaje'];
-    echo "<script languaje='javascript'>alert('$mensaje')</script>";
-    unset($_SESSION['mensaje']);
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,22 +21,22 @@ if (isset($_SESSION['mensaje'])) {
 	
 	<body>
 <?php
-if(isset($_SESSION['listaDeLibros'])){
+if(isset($_SESSION['listaDeSoportes'])){
 	
-	 $listaDeLibros=$_SESSION['listaDeLibros'];
-	 unset($_SESSION['listaDeLibros']);
+	 $listaDeSoportes=$_SESSION['listaDeSoportes'];
+	 unset($_SESSION['listaDeSoportes']);
 	
 }
 ?>
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Isbn</th> 
-                <th>Titulo</th> 
-                <th>Autor</th> 
-                <th>Precio</th> 
+                <th>id</th> 
+                <th>Nombre del comprobante</th> 
+                <th>tipo movimiento</th> 
+                <th>Valor Movimiento</th> 
+                <th>fecha movimiento</th> 
                 <!--<th>Estado</th>--> 
-                <th>Categoria</th> 
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -51,22 +44,22 @@ if(isset($_SESSION['listaDeLibros'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listaDeLibros as $key => $value) {
+            foreach ($listaDeSoportes as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeLibros[$i]->isbn; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->titulo; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->autor; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->precio; ?></td>  
+                    <td><?php echo $listaDeSoportes[$i]->idSoportes; ?></td>  
+                    <td><?php echo $listaDeSoportes[$i]->sopNomComprobante; ?></td>  
+                    <td><?php echo $listaDeSoportes[$i]->movTipo; ?></td>  
+                    <td><?php echo $listaDeSoportes[$i]->movValor; ?></td> 
+                    <td><?php echo $listaDeSoportes[$i]->movFecha; ?></td> 
                     <!--<td>d>-->  
-                    <td><?php echo $listaDeLibros[$i]->catLibNombre; ?></td>  
-                    <td><a href="Controlador.php?ruta=actualizarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><a href="Controlador.php?ruta=actualizarSoporte&idAct=<?php echo $listaDeSoportes[$i]->idSoportes; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarSoporte&idAct=<?php echo $listaDeSoportes[$i]->idSoportes; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listaDeLibros=null;
+            $listaDeSoportes=null;
             ?>
         </tbody>
     </table>

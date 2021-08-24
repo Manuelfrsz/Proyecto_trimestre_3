@@ -1,14 +1,7 @@
 <?php
 //echo "<pre>";
-//print_r($_SESSION['listaDeLibros']);
+//print_r($_SESSION['listaDeAyudas']);
 //echo "</pre>";
-
-if (isset($_SESSION['mensaje'])) {
-    $mensaje = $_SESSION['mensaje'];
-    echo "<script languaje='javascript'>alert('$mensaje')</script>";
-    unset($_SESSION['mensaje']);
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,22 +21,18 @@ if (isset($_SESSION['mensaje'])) {
 	
 	<body>
 <?php
-if(isset($_SESSION['listaDeLibros'])){
+if(isset($_SESSION['listaDeAyudas'])){
 	
-	 $listaDeLibros=$_SESSION['listaDeLibros'];
-	 unset($_SESSION['listaDeLibros']);
+	 $listaDeAyudas=$_SESSION['listaDeAyudas'];
+	 unset($_SESSION['listaDeAyudas']);
 	
 }
 ?>
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Isbn</th> 
-                <th>Titulo</th> 
-                <th>Autor</th> 
-                <th>Precio</th> 
-                <!--<th>Estado</th>--> 
-                <th>Categoria</th> 
+                <th>Id del Consejo</th> 
+                <th>Consejo</th> 
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -51,22 +40,18 @@ if(isset($_SESSION['listaDeLibros'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listaDeLibros as $key => $value) {
+            foreach ($listaDeAyudas as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeLibros[$i]->isbn; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->titulo; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->autor; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->precio; ?></td>  
-                    <!--<td>d>-->  
-                    <td><?php echo $listaDeLibros[$i]->catLibNombre; ?></td>  
-                    <td><a href="Controlador.php?ruta=actualizarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><?php echo $listaDeAyudas[$i]->idAyudas; ?></td>  
+                    <td><?php echo $listaDeAyudas[$i]->ayuConsejo; ?></td>  
+                    <td><a href="Controlador.php?ruta=actualizarAyuda&idAct=<?php echo $listaDeAyudas[$i]->idAyudas; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarAyuda&idAct=<?php echo $listaDeAyudas[$i]->idAyudas; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listaDeLibros=null;
+            $listaDeAyudas=null;
             ?>
         </tbody>
     </table>

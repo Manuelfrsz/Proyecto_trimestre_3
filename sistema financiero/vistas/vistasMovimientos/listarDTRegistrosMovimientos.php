@@ -1,14 +1,7 @@
 <?php
 //echo "<pre>";
-//print_r($_SESSION['listaDeLibros']);
+//print_r($_SESSION['listaDeMovimientos']);
 //echo "</pre>";
-
-if (isset($_SESSION['mensaje'])) {
-    $mensaje = $_SESSION['mensaje'];
-    echo "<script languaje='javascript'>alert('$mensaje')</script>";
-    unset($_SESSION['mensaje']);
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,22 +21,27 @@ if (isset($_SESSION['mensaje'])) {
 	
 	<body>
 <?php
-if(isset($_SESSION['listaDeLibros'])){
+if(isset($_SESSION['listaDeMovimientos'])){
 	
-	 $listaDeLibros=$_SESSION['listaDeLibros'];
-	 unset($_SESSION['listaDeLibros']);
+	 $listaDeMovimientos=$_SESSION['listaDeMovimientos'];
+	 unset($_SESSION['listaDeMovimientos']);
 	
 }
 ?>
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Isbn</th> 
-                <th>Titulo</th> 
-                <th>Autor</th> 
-                <th>Precio</th> 
-                <!--<th>Estado</th>--> 
-                <th>Categoria</th> 
+                <th>id</th>  
+                <th>Tipo de Movimiento</th> 
+                <th>Nombre del Movimiento</th>
+                <th>Tipo de Cuenta</th>  
+                <th>Cuenta de Uso</th>
+                <th>valor de Movimiento</th>
+                <th>Fecha</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>saldo de Cuenta</th>
+                <th>Balance</th>         
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -51,22 +49,28 @@ if(isset($_SESSION['listaDeLibros'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listaDeLibros as $key => $value) {
+            foreach ($listaDeMovimientos as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeLibros[$i]->isbn; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->titulo; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->autor; ?></td>  
-                    <td><?php echo $listaDeLibros[$i]->precio; ?></td>  
-                    <!--<td>d>-->  
-                    <td><?php echo $listaDeLibros[$i]->catLibNombre; ?></td>  
-                    <td><a href="Controlador.php?ruta=actualizarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><?php echo $listaDeMovimientos[$i]->idMovimientos; ?></td>   
+                    <td><?php echo $listaDeMovimientos[$i]->movTipo; ?></td>  
+                    <td><?php echo $listaDeMovimientos[$i]->movNombre; ?></td>
+                    <td><?php echo $listaDeMovimientos[$i]->cueTipo; ?></td>
+                    <td><?php echo $listaDeMovimientos[$i]->movCuentaUso; ?></td>
+                    <td><?php echo $listaDeMovimientos[$i]->movValor; ?></td>
+                    <td><?php echo $listaDeMovimientos[$i]->movFecha; ?></td>
+                    <td><?php echo $listaDeMovimientos[$i]->usuNombres; ?></td>
+                    <td><?php echo $listaDeMovimientos[$i]->usuApellidos; ?></td>
+                    <td><?php echo $listaDeMovimientos[$i]->cueSaldo; ?></td>   
+                    <td><?php echo $listaDeMovimientos[$i]->BalTotal; ?></td> 
+
+                    <td><a href="Controlador.php?ruta=actualizarMovimientos&idAct=<?php echo $listaDeMovimientos[$i]->idMovimientos; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarMovimientos&idAct=<?php echo $listaDeMovimientos[$i]->idMovimientos; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listaDeLibros=null;
+            $listaDeMovimientos=null;
             ?>
         </tbody>
     </table>
