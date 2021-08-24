@@ -31,23 +31,17 @@ if(isset($_SESSION['listaDeMovimientos'])){
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>idMovimientos</th> 
-                <th>Usuarios_idUsuarios</th> 
+                <th>id</th>  
                 <th>Tipo de Movimiento</th> 
-                <th>Nombres</th> 
-                <!--<th>Estado</th>--> 
+                <th>Nombre del Movimiento</th>
+                <th>Tipo de Cuenta</th>  
                 <th>Cuenta de Uso</th>
                 <th>valor de Movimiento</th>
                 <th>Fecha</th>
-                <th>Tipo de Documento</th>
-                <th>Documento</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
-                <th>Cuentas</th>
-                <th>Tipo de Cuenta</th>
                 <th>saldo de Cuenta</th>
-                <th>Balances</th>
-                <th>total</th>         
+                <th>Balance</th>         
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -58,21 +52,16 @@ if(isset($_SESSION['listaDeMovimientos'])){
             foreach ($listaDeMovimientos as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeMovimientos[$i]->idMovimientos; ?></td>  
-                    <td><?php echo $listaDeMovimientos[$i]->Usuarios_idUsuarios; ?></td>  
+                    <td><?php echo $listaDeMovimientos[$i]->idMovimientos; ?></td>   
                     <td><?php echo $listaDeMovimientos[$i]->movTipo; ?></td>  
                     <td><?php echo $listaDeMovimientos[$i]->movNombre; ?></td>
+                    <td><?php echo $listaDeMovimientos[$i]->cueTipo; ?></td>
                     <td><?php echo $listaDeMovimientos[$i]->movCuentaUso; ?></td>
                     <td><?php echo $listaDeMovimientos[$i]->movValor; ?></td>
                     <td><?php echo $listaDeMovimientos[$i]->movFecha; ?></td>
-                    <td><?php echo $listaDeMovimientos[$i]->usuTipoDocumento; ?></td>
-                    <td><?php echo $listaDeMovimientos[$i]->usuDocumento; ?></td>
                     <td><?php echo $listaDeMovimientos[$i]->usuNombres; ?></td>
                     <td><?php echo $listaDeMovimientos[$i]->usuApellidos; ?></td>
-                    <td><?php echo $listaDeMovimientos[$i]->idCuentas; ?></td>
-                    <td><?php echo $listaDeMovimientos[$i]->cueTipo; ?></td>
-                    <td><?php echo $listaDeMovimientos[$i]->cueSaldo; ?></td>
-                    <td><?php echo $listaDeMovimientos[$i]->idBalances; ?></td>    
+                    <td><?php echo $listaDeMovimientos[$i]->cueSaldo; ?></td>   
                     <td><?php echo $listaDeMovimientos[$i]->BalTotal; ?></td> 
 
                     <td><a href="Controlador.php?ruta=actualizarMovimientos&idAct=<?php echo $listaDeMovimientos[$i]->idMovimientos; ?>">Actualizar</a></td>  

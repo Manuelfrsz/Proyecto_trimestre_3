@@ -58,7 +58,7 @@ session_start();
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Movimientos
 	 <br/>
-	 <a href="">Listar Movimientos</a>
+	 <a href="Controlador.php?ruta=listarMovimientos&pag=">Listar Movimientos</a>
      <br/>
      <a href="">Agregar Movimientos</a>   	 
 	 </div>

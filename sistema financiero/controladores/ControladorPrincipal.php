@@ -4,6 +4,7 @@ include_once PATH . 'controladores/LibrosControlador.php';
 include_once PATH . 'controladores/usuariosControlador.php';
 include_once PATH . 'controladores/cuentasControlador.php';
 include_once PATH . 'controladores/balancesControlador.php';
+include_once PATH . 'controladores/movimientosControlador.php';
 include_once PATH . 'controladores/calendariosControlador.php';
 
 class ControladorPrincipal {
@@ -84,6 +85,18 @@ class ControladorPrincipal {
             case "confirmaActualizarCalendarios":
                 $this->confirmaActualizarCalendarios();
                 break;
+
+            case "listarMovimientos":
+                $this->listarMovimientos();
+                break;
+                
+            case "actualizarMovimientos":
+                $this->actualizarMovimientos();
+                break;
+    
+            case "confirmaActualizarMovimientos":
+                $this->confirmaActualizarMovimientos();
+                break;
         }
     }
 
@@ -150,6 +163,19 @@ class ControladorPrincipal {
     public function confirmaActualizarCalendarios() {
 
         $calendariosControlador = new calendariosControlador($this->datos);
+    }
+
+    public function listarMovimientos() {
+        $movimientosControlador = new movimientosControlador($this->datos);
+    }
+
+    public function actualizarMovimientos() {
+        $movimientosControlador = new movimientosControlador($this->datos);
+    }
+
+    public function confirmaActualizarMovimientos() {
+
+        $movimientosControlador = new movimientosControlador($this->datos);
     }
 
 }
