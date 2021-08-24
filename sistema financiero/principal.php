@@ -64,7 +64,7 @@ session_start();
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Soportes
 	 <br/>
-	 <a href="">Listar Soportes</a>
+	 <a href="Controlador.php?ruta=listarSoportes&pag=0">Listar Soportes</a>
      <br/>
      <a href="">Agregar Soportes</a>   	 
 	 </div>

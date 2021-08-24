@@ -4,6 +4,7 @@ include_once PATH . 'controladores/LibrosControlador.php';
 include_once PATH . 'controladores/usuariosControlador.php';
 include_once PATH . 'controladores/cuentasControlador.php';
 include_once PATH . 'controladores/balancesControlador.php';
+include_once PATH . 'controladores/soportesControlador.php';
 
 class ControladorPrincipal {
 
@@ -38,19 +39,17 @@ class ControladorPrincipal {
                 $this->confirmaActualizarLibro();
                 break;
 
-                case "listarUsuarios":
-                    $this->listarUsuarios();
-                    break;
+             case "listarUsuarios":
+                $this->listarUsuarios();
+                break;
                 
-                case "actualizarUsuarios":
+            case "actualizarUsuarios":    
+                $this->actualizarUsuarios();   
+                break;
     
-                    $this->actualizarUsuarios();
-    
-                    break;
-    
-                case "confirmaActualizarUsuario":
-                    $this->confirmaActualizarUsuarios();
-                    break;
+            case "confirmaActualizarUsuario":
+                $this->confirmaActualizarUsuarios();
+                break;
             
             
 
@@ -71,15 +70,27 @@ class ControladorPrincipal {
             case "listarCuentas":
                 $this->listarCuentas();
                 break;
+
             case "actualizarCuentas":
-
                 $this->actualizarCuentas();
-
                 break;
 
             case "confirmaActualizarCuentas":
                 $this->confirmaActualizarCuentas();
                 break;    
+            
+
+            case "listarSoportes":
+                $this->listarSoportes();
+                break;
+
+            case "actualizarSoportes":
+                $this->actualizarSoportes();
+                break;
+
+            case "confirmaActualizarSoportes":
+                $this->confirmaActualizarSoportes();
+                break;
         }
     }
 
@@ -135,6 +146,18 @@ class ControladorPrincipal {
         $cuentasControlador = new cuentasControlador($this->datos);
     }
 
+    public function listarSoportes() {
+        $SoportesControlador = new SoportesControlador($this->datos);
+    }
+
+    public function actualizarSoportes() {
+        $SoportesControlador = new SoportesControlador($this->datos);
+    }
+
+    public function confirmaActualizarSoportes() {
+
+        $SoportesControlador = new SoportesControlador($this->datos);
+    }
 }
 
 ?>
