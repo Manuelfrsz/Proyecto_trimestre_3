@@ -1,35 +1,35 @@
 <?php
 
-include_once PATH . 'modelos/modeloLibros/LibroDAO.php';
+include_once PATH . 'modelos/modeloMovimientos/movimientosDAO.php';
 
-class LibrosControlador {
+class movimientosControlador {
 
     private $datos;
 
     public function __construct($datos) {
         $this->datos = $datos;
-        $this->librosControlador();
+        $this->movimientosControlador();
     }
 
-    public function librosControlador() {
+    public function movimientosControlador() {
         switch ($this->datos['ruta']) {
-            case "listarLibros": //provisionalmente para trabajar con datatables
-                $this->listarLibros();
+            case "listarMovimientos": //provisionalmente para trabajar con datatables
+                $this->listarMovimientos();
                 break;
         }
     }
 
-    public function listarLibros() {
+    public function listarMovimientos() {
 
-        $gestarLibros = new LibroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
-        $registroLibros = $gestarLibros->seleccionarTodos();
+        $gestarMovimientos = new movimientosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $registroMovimientos = $gestarMovimientos->seleccionarTodos();
 
         session_start();
 
         //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS IMPRIMA O UTILICE//
-        $_SESSION['listaDeLibros'] = $registroLibros;
+        $_SESSION['listaDeMovimientos'] = $registroMovimientos;
 
-        header("location:principal.php?contenido=vistas/vistasLibros/listarDTRegistrosLibros.php");
+        header("location:principal.php?contenido=vistas/vistasMovimientos/listarDTRegistrosMovimientos.php");
     }
 
 }

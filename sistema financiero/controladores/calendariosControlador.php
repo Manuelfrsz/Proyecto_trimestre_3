@@ -1,35 +1,35 @@
 <?php
 
-include_once PATH . 'modelos/modeloLibros/LibroDAO.php';
+include_once PATH . 'modelos/modeloCalendarios/calendariosDAO.php';
 
-class LibrosControlador {
+class calendariosControlador {
 
     private $datos;
 
     public function __construct($datos) {
         $this->datos = $datos;
-        $this->librosControlador();
+        $this->calendariosControlador();
     }
 
-    public function librosControlador() {
+    public function calendariosControlador() {
         switch ($this->datos['ruta']) {
-            case "listarLibros": //provisionalmente para trabajar con datatables
-                $this->listarLibros();
+            case "listarCalendarios": //provisionalmente para trabajar con datatables
+                $this->listarCalendarios();
                 break;
         }
     }
 
-    public function listarLibros() {
+    public function listarCalendarios() {
 
-        $gestarLibros = new LibroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
-        $registroLibros = $gestarLibros->seleccionarTodos();
+        $gestarCalendarios = new calendariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $registroCalendarios = $gestarCalendarios->seleccionarTodos();
 
         session_start();
 
         //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS IMPRIMA O UTILICE//
-        $_SESSION['listaDeLibros'] = $registroLibros;
+        $_SESSION['listaDeCalendarios'] = $registroCalendarios;
 
-        header("location:principal.php?contenido=vistas/vistasLibros/listarDTRegistrosLibros.php");
+        header("location:principal.php?contenido=vistas/vistasCalendarios/listarDTRegistrosCalendarios.php");
     }
 
 }

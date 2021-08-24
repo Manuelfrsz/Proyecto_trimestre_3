@@ -4,6 +4,8 @@ include_once PATH . 'controladores/LibrosControlador.php';
 include_once PATH . 'controladores/usuariosControlador.php';
 include_once PATH . 'controladores/cuentasControlador.php';
 include_once PATH . 'controladores/balancesControlador.php';
+include_once PATH . 'controladores/movimientosControlador.php';
+include_once PATH . 'controladores/calendariosControlador.php';
 include_once PATH . 'controladores/soportesControlador.php';
 include_once PATH . 'controladores/ayudasControlador.php';
 
@@ -31,54 +33,72 @@ class ControladorPrincipal {
                 break;
             
             case "actualizarLibro":
-
                 $this->actualizarLibro();
-
                 break;
 
             case "confirmaActualizarLibro":
                 $this->confirmaActualizarLibro();
                 break;
 
-             case "listarUsuarios":
+            case "listarUsuarios":
                 $this->listarUsuarios();
                 break;
                 
-            case "actualizarUsuarios":    
-                $this->actualizarUsuarios();   
+            case "actualizarUsuarios":
+                $this->actualizarUsuarios();
                 break;
     
             case "confirmaActualizarUsuario":
                 $this->confirmaActualizarUsuarios();
                 break;
             
-            
-
             case "listarBalances":
                 $this->listarBalances();
                 break;
+            
             case "actualizarBalances":
-    
                 $this->actualizarBalances();
-    
                 break;
     
             case "confirmaActualizarBalances":
                 $this->confirmaActualizarBalances();
                 break;    
                 
-
             case "listarCuentas":
                 $this->listarCuentas();
                 break;
-
+            
             case "actualizarCuentas":
                 $this->actualizarCuentas();
                 break;
 
             case "confirmaActualizarCuentas":
                 $this->confirmaActualizarCuentas();
-                break;    
+                break; 
+                
+            case "listarCalendarios":
+                $this->listarCalendarios();
+                break;
+                
+            case "actualizarCalendarios":
+                $this->actualizarCalendarios();
+                break;
+    
+            case "confirmaActualizarCalendarios":
+                $this->confirmaActualizarCalendarios();
+                break;
+
+            case "listarMovimientos":
+                $this->listarMovimientos();
+                break;
+                
+            case "actualizarMovimientos":
+                $this->actualizarMovimientos();
+                break;
+    
+            case "confirmaActualizarMovimientos":
+                $this->confirmaActualizarMovimientos();
+                break;
             
 
             case "listarSoportes":
@@ -158,6 +178,32 @@ class ControladorPrincipal {
     public function confirmaActualizarCuentas() {
 
         $cuentasControlador = new cuentasControlador($this->datos);
+    }
+
+    public function listarCalendarios() {
+        $calendariosControlador = new calendariosControlador($this->datos);
+    }
+
+    public function actualizarCalendarios() {
+        $calendariosControlador = new calendariosControlador($this->datos);
+    }
+
+    public function confirmaActualizarCalendarios() {
+
+        $calendariosControlador = new calendariosControlador($this->datos);
+    }
+
+    public function listarMovimientos() {
+        $movimientosControlador = new movimientosControlador($this->datos);
+    }
+
+    public function actualizarMovimientos() {
+        $movimientosControlador = new movimientosControlador($this->datos);
+    }
+
+    public function confirmaActualizarMovimientos() {
+
+        $movimientosControlador = new movimientosControlador($this->datos);
     }
 
     public function listarSoportes() {
