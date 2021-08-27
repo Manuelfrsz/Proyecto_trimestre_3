@@ -1,15 +1,8 @@
 <?php
 //echo "<pre>";
-//print_r($_SESSION['listaDeUsuarios']);
+//print_r($_SESSION['listaDeLibros']);
 //echo "</pre>";
-
-if (isset($_SESSION['mensaje'])){
-    $mensaje = $_SESSION['mensaje'];
-    echo "<script languaje='javascript'>alert('$mensaje')</script>";
-    unset($_SESSION['mensaje']);
-}
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,24 +21,22 @@ if (isset($_SESSION['mensaje'])){
 	
 	<body>
 <?php
-if(isset($_SESSION['listaDeUsuarios'])){
+if(isset($_SESSION['listaDeLibros'])){
 	
-	 $listaDeUsuarios=$_SESSION['listaDeUsuarios'];
-	 unset($_SESSION['listaDeUsuarios']);
+	 $listaDeLibros=$_SESSION['listaDeLibros'];
+	 unset($_SESSION['listaDeLibros']);
 	
 }
 ?>
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>idUsuarios</th> 
-                <th>tipo De Documento</th> 
-                <th>Documento</th> 
-                <th>Nombres</th> 
-                <th>Apellidos</th> 
-                <th>Fecha De Nacimiento</th> 
-                <th>Edad</th> 
-                <th>Estrato</th> 
+                <th>Isbn</th> 
+                <th>Titulo</th> 
+                <th>Autor</th> 
+                <th>Precio</th> 
+                <!--<th>Estado</th>--> 
+                <th>Categoria</th> 
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -53,25 +44,22 @@ if(isset($_SESSION['listaDeUsuarios'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listaDeUsuarios as $key => $value) {
+            foreach ($listaDeLibros as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeUsuarios[$i]->idUsuarios; ?></td>  
-                    <td><?php echo $listaDeUsuarios[$i]->usuTipoDocumento; ?></td>  
-                    <td><?php echo $listaDeUsuarios[$i]->usuDocumento; ?></td> 
-                    <td><?php echo $listaDeUsuarios[$i]->usuNombres; ?></td>  
-                    <td><?php echo $listaDeUsuarios[$i]->usuApellidos; ?></td> 
-                    <td><?php echo $listaDeUsuarios[$i]->usuFechaNacimiento; ?></td>
-                    <td><?php echo $listaDeUsuarios[$i]->usuEdad; ?></td>
-                    <td><?php echo $listaDeUsuarios[$i]->usuEstrato; ?></td>
-                    
-                    <td><a href="Controlador.php?ruta=actualizarUsuarios&idAct=<?php echo $listaDeUsuarios[$i]->idUsuarios ; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarUsuarios&idAct=<?php echo $listaDeUsuarios[$i]->idUsuarios; ?>" onclick="return confirm('Está seguro de eliminar el Usuario?')">Eliminar</a></td>  
+                    <td><?php echo $listaDeLibros[$i]->isbn; ?></td>  
+                    <td><?php echo $listaDeLibros[$i]->titulo; ?></td>  
+                    <td><?php echo $listaDeLibros[$i]->autor; ?></td>  
+                    <td><?php echo $listaDeLibros[$i]->precio; ?></td>  
+                    <!--<td>d>-->  
+                    <td><?php echo $listaDeLibros[$i]->catLibNombre; ?></td>  
+                    <td><a href="Controlador.php?ruta=actualizarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listaDeUsuarios=null;
+            $listaDeLibros=null;
             ?>
         </tbody>
     </table>

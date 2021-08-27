@@ -81,7 +81,45 @@ class UsuariosDAO extends ConBdMySql{
     }
 
     public function actualizar($registro){
-        
+        try{	
+            $TipoDocumento = $registro[0]['usuTipoDocumento'];
+            $Documento = $registro[0]['usuDocumento'];
+            $Nombres = $registro[0]['usuNombres'];
+            $Apellidos = $registro[0]['usuApellidos'];
+            $FechaNacimiento = $registro[0]['usuFechaNacimiento'];
+            $Edad = $registro[0]['usuEdad'];
+            $Estrato = $registro[0]['usuEstrato'];
+            $idUsuarios = $registro[0]['idUsuarios'];	
+            
+			
+			
+			if(isset($idUsuarios)){
+				
+                $actualizar = "UPDATE usuarios SET usuTipoDocumento = ? , ";
+                $actualizar .= " usuDocumento = ? , ";
+                $actualizar .= " usuNombres = ? , ";
+                $actualizar .= " usuApellidos = ? , ";
+                $actualizar .= " usuFechaNacimiento = ? , ";
+                $actualizar .= " usuEdad = ? , ";
+                $actualizar .= " usuEstrato = ?  "; 
+                $actualizar .= " WHERE idUsuarios= ? ; ";
+				
+				$actualizacion = $this->conexion->prepare($actualizar);
+				
+				$resultadoAct=$actualizacion->execute(array( $TipoDocumento, $Documento, $Nombres, $Apellidos, $FechaNacimiento, $Edad, $Estrato, $idUsuarios));
+				
+				        
+						
+				//MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];				
+				
+			}
+
+
+        } catch (PDOException $pdoExc) {
+			$this->cierreBd();
+            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        } 
     }
 
     public function eliminar($sId = array()){
