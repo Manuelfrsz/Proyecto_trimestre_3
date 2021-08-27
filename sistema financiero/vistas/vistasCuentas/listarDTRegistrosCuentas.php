@@ -2,6 +2,14 @@
 //echo "<pre>";
 //print_r($_SESSION['listaDeLibros']);
 //echo "</pre>";
+
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script languaje='javascript'>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +39,7 @@ if(isset($_SESSION['listaDeCuentas'])){
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>ID Usuario</th> 
+                <th>ID Cuenta</th> 
                 <th>Tipo de documento</th> 
                 <th>Documento</th> 
                 <th>Nombres</th> 
@@ -50,7 +58,7 @@ if(isset($_SESSION['listaDeCuentas'])){
             foreach ($listaDeCuentas as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeCuentas[$i]->idUsuarios; ?></td>  
+                    <td><?php echo $listaDeCuentas[$i]->idCuentas; ?></td>  
                     <td><?php echo $listaDeCuentas[$i]->usuTipoDocumento; ?></td>   
                     <td><?php echo $listaDeCuentas[$i]->usuDocumento; ?></td> 
                     <td><?php echo $listaDeCuentas[$i]->usuNombres; ?></td>
@@ -59,8 +67,8 @@ if(isset($_SESSION['listaDeCuentas'])){
                     <td><?php echo $listaDeCuentas[$i]->cueNombre; ?></td>
                     <td><?php echo $listaDeCuentas[$i]->cueSaldo; ?></td>    
                     <!--<td>d>-->    
-                    <td><a href="Controlador.php?ruta=actualizarCuenta&idAct=<?php echo $listaDeCuentas[$i]->isbn; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarCuenta&idAct=<?php echo $listaDeCuentas[$i]->isbn; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><a href="Controlador.php?ruta=actualizarCuentas&idAct=<?php echo $listaDeCuentas[$i]->idCuentas; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarCuentas&idAct=<?php echo $listaDeCuentas[$i]->idCuentas; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;

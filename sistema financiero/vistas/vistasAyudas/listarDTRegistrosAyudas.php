@@ -2,7 +2,14 @@
 //echo "<pre>";
 //print_r($_SESSION['listaDeAyudas']);
 //echo "</pre>";
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script languaje='javascript'>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}
 ?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,8 +52,8 @@ if(isset($_SESSION['listaDeAyudas'])){
                 <tr>
                     <td><?php echo $listaDeAyudas[$i]->idAyudas; ?></td>  
                     <td><?php echo $listaDeAyudas[$i]->ayuConsejo; ?></td>  
-                    <td><a href="Controlador.php?ruta=actualizarAyuda&idAct=<?php echo $listaDeAyudas[$i]->idAyudas; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarAyuda&idAct=<?php echo $listaDeAyudas[$i]->idAyudas; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><a href="Controlador.php?ruta=actualizarAyudas&idAct=<?php echo $listaDeAyudas[$i]->idAyudas; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarAyudas&idAct=<?php echo $listaDeAyudas[$i]->idAyudas; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;

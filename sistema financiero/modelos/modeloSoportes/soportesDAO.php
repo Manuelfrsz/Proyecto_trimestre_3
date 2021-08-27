@@ -77,6 +77,34 @@ class SoportesDAO extends ConBdMySql{
     }
 
     public function actualizar($registro){
+
+        try{
+            $sopNomComprobante = $registro[0]['sopNomComprobante'];
+            $idSoportes = $registro[0]['idSoportes'];	
+
+			
+			
+			if(isset($idSoportes)){
+				
+                $actualizar = "UPDATE soportes SET sopNomComprobante = ?  ";
+                $actualizar .= " WHERE idSoportes = ? ; ";
+				
+				$actualizacion = $this->conexion->prepare($actualizar);
+				
+				$resultadoAct=$actualizacion->execute(array($sopNomComprobante,$idSoportes));
+				
+				        $this->cierreBd();
+						
+				//MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];				
+				
+			}
+
+
+        } catch (PDOException $pdoExc) {
+			$this->cierreBd();
+            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        }
         
     }
 

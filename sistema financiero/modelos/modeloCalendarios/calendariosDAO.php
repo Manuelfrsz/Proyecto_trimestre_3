@@ -1,7 +1,7 @@
 <?php
 
-include_once "../modelos/ConstantesConexion.php";
-include_once PATH."modelos/ConBdMysql.php";
+//include_once "../modelos/ConstantesConexion.php";
+//include_once PATH."modelos/ConBdMysql.php";
 
 class calendariosDAO extends ConBdMySql{
     public function __construct($servidor, $base, $loginBD, $passwordBD){
@@ -77,6 +77,38 @@ class calendariosDAO extends ConBdMySql{
     }
 
     public function actualizar($registro){
+
+        try{
+            $calTipoPago = $registro[0]['calTipoPago'];
+            $calNomPago = $registro[0]['calNomPago'];
+            $calFechaPago = $registro[0]['calFechaPago'];
+            $idCalendarios = $registro[0]['idCalendarios'];	
+
+			
+			
+			if(isset($idCalendarios)){
+				
+                $actualizar = "UPDATE calendarios SET calTipoPago = ? , ";
+                $actualizar .= "calNomPago = ? , ";
+                $actualizar .= "calFechaPago = ?   ";
+                $actualizar .= " WHERE idCalendarios = ? ; ";
+				
+				$actualizacion = $this->conexion->prepare($actualizar);
+				
+				$resultadoAct=$actualizacion->execute(array($calTipoPago, $calNomPago, $calFechaPago, $idCalendarios));
+				
+				        $this->cierreBd();
+						
+				//MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];				
+				
+			}
+
+
+        } catch (PDOException $pdoExc) {
+			$this->cierreBd();
+            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        }
         
     }
 

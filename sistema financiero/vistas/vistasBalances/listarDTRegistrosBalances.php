@@ -2,7 +2,14 @@
 //echo "<pre>";
 //print_r($_SESSION['listaDeBalances']);
 //echo "</pre>";
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script languaje='javascript'>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}    
 ?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +38,7 @@ if(isset($_SESSION['listaDeBalances'])){
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>idUsuarios</th> 
+                <th>idBalances</th> 
                 <th>Tipo De Documento</th> 
                 <th>Documento</th> 
                 <th>Nombres</th> 
@@ -49,7 +56,7 @@ if(isset($_SESSION['listaDeBalances'])){
             foreach ($listaDeBalances as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeBalances[$i]->idUsuarios; ?></td>  
+                    <td><?php echo $listaDeBalances[$i]->idBalances; ?></td>  
                     <td><?php echo $listaDeBalances[$i]->usuTipoDocumento; ?></td>  
                     <td><?php echo $listaDeBalances[$i]->usuDocumento; ?></td>  
                     <td><?php echo $listaDeBalances[$i]->usuNombres; ?></td>
@@ -57,8 +64,8 @@ if(isset($_SESSION['listaDeBalances'])){
                     <td><?php echo $listaDeBalances[$i]->usuEstrato; ?></td>
                     <!--<td>d>-->  
                     <td><?php echo $listaDeBalances[$i]->balTotal; ?></td>  
-                    <td><a href="Controlador.php?ruta=actualizarBalances&idAct=<?php echo $listaDeBalances[$i]->isbn; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarBalances&idAct=<?php echo $listaDeBalances[$i]->isbn; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><a href="Controlador.php?ruta=actualizarBalances&idAct=<?php echo $listaDeBalances[$i]->idBalances; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarBalances&idAct=<?php echo $listaDeBalances[$i]->idBalances; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;

@@ -48,7 +48,7 @@ class ControladorPrincipal {
                 $this->actualizarUsuarios();
                 break;
     
-            case "confirmaActualizarUsuario":
+            case "confirmaActualizarUsuarios":
                 $this->confirmaActualizarUsuarios();
                 break;
             
@@ -141,20 +141,20 @@ class ControladorPrincipal {
         $librosControlador = new LibrosControlador($this->datos);
     }
     
-    public function listarUsuarios() {
+    public function listarUsuarios(){
         $usuariosControlador = new usuariosControlador($this->datos);
     }
 
-    public function actualizarUsuarios() {
+    public function actualizarUsuarios(){
         $usuariosControlador = new usuariosControlador($this->datos);
     }
 
-    public function confirmaActualizarUsuarios() {
+    public function confirmaActualizarUsuarios(){
 
         $usuariosControlador = new usuariosControlador($this->datos);
     }
 
-    public function listarBalances() {
+    public function listarBalances(){
         $balancesControlador = new balancesControlador($this->datos);
     }
 

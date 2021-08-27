@@ -16,6 +16,14 @@ class SoportesControlador {
             case "listarSoportes": //provisionalmente para trabajar con datatables
                 $this->listarSoportes();
                 break;
+                
+            case "actualizarSoportes": //provisionalmente para trabajar con datatables
+                $this->actualizarSoportes();
+                break;
+
+            case "confirmaActualizarSoportes": //provisionalmente para trabajar con datatables
+                $this->confirmaActualizarSoportes();
+                break;
         }
     }
 
@@ -30,6 +38,31 @@ class SoportesControlador {
         $_SESSION['listaDeSoportes'] = $registroSoportes;
 
         header("location:principal.php?contenido=vistas/vistasSoportes/listarDTRegistrosSoportes.php");
+    }
+    
+    public function actualizarSoportes (){
+        $gestarSoportes = new SoportesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $consultaDeSoportes =$gestarSoportes->seleccionarId(array($this->datos['idAct']));
+
+        $actualizarDatosSoportes = $consultaDeSoportes['registroEncontrado'][0];
+
+
+        session_start();
+        $_SESSION['actualizarDatosSoportes'] = $actualizarDatosSoportes;
+
+
+        header("location:principal.php?contenido=vistas/vistasSoportes/vistaActualizarSoportes.php");	
+
+    }
+
+    public function confirmaActualizarSoportes(){
+        $gestarSoportes = new SoportesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $actualizarSoportes = $gestarSoportes->actualizar(array($this->datos)); 			
+
+        session_start();
+        $_SESSION['mensaje'] = "Actualización realizada.";
+        header("location:Controlador.php?ruta=listarSoportes");	
+
     }
 
 }
