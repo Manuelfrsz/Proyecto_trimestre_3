@@ -54,7 +54,7 @@ class CuentasControlador {
 
     }
 
-public function confirmaActualizarCuentas(){
+    public function confirmaActualizarCuentas(){
         $gestarCuentas = new CuentasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
         $actualizarCuentas = $gestarCuentas->actualizar(array($this->datos)); 			
 

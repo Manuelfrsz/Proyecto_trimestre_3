@@ -38,7 +38,7 @@ if(isset($_SESSION['listaDeBalances'])){
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>idUsuarios</th> 
+                <th>idBalances</th> 
                 <th>Tipo De Documento</th> 
                 <th>Documento</th> 
                 <th>Nombres</th> 

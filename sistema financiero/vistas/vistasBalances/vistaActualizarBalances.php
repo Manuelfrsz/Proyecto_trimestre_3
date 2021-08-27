@@ -27,14 +27,14 @@ echo "<pre>"; */
                     </td>
                 </tr>
                 <tr>
-                    <td>                
-                        <input class="form-control" placeholder="balance Total" name="balTotal" type="number" required="required" 
+                    <td>                  
+                        <input class="form-control" placeholder="Balance total" name="balTotal" type="number"  required="required" 
                                value="<?php 
 									if(isset($actualizarDatosBalances->balTotal)){ echo $actualizarDatosBalances->balTotal; }
 							   ?>">
                     </td>
                 </tr>
-                    <tr>            
+                <tr>            
                     <td>            
                         <button type="reset" name="ruta" value="cancelarActualizarBalances">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarBalances">Actualizar Balances</button>

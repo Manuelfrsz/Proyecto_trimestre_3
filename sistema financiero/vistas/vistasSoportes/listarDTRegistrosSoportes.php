@@ -2,6 +2,13 @@
 //echo "<pre>";
 //print_r($_SESSION['listaDeSoportes']);
 //echo "</pre>";
+
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script languaje='javascript'>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,8 +60,8 @@ if(isset($_SESSION['listaDeSoportes'])){
                     <td><?php echo $listaDeSoportes[$i]->movValor; ?></td> 
                     <td><?php echo $listaDeSoportes[$i]->movFecha; ?></td> 
                     <!--<td>d>-->  
-                    <td><a href="Controlador.php?ruta=actualizarSoporte&idAct=<?php echo $listaDeSoportes[$i]->idSoportes; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarSoporte&idAct=<?php echo $listaDeSoportes[$i]->idSoportes; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><a href="Controlador.php?ruta=actualizarSoportes&idAct=<?php echo $listaDeSoportes[$i]->idSoportes; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarSoportes&idAct=<?php echo $listaDeSoportes[$i]->idSoportes; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
