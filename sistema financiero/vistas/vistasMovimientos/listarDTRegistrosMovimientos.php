@@ -2,6 +2,12 @@
 //echo "<pre>";
 //print_r($_SESSION['listaDeMovimientos']);
 //echo "</pre>";
+
+if (isset($_SESSION['mensaje'])){
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script languaje='javascript'>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,7 +68,7 @@ if(isset($_SESSION['listaDeMovimientos'])){
                     <td><?php echo $listaDeMovimientos[$i]->usuNombres; ?></td>
                     <td><?php echo $listaDeMovimientos[$i]->usuApellidos; ?></td>
                     <td><?php echo $listaDeMovimientos[$i]->cueSaldo; ?></td>   
-                    <td><?php echo $listaDeMovimientos[$i]->BalTotal; ?></td> 
+                    <td><?php echo $listaDeMovimientos[$i]->balTotal; ?></td> 
 
                     <td><a href="Controlador.php?ruta=actualizarMovimientos&idAct=<?php echo $listaDeMovimientos[$i]->idMovimientos; ?>">Actualizar</a></td>  
                     <td><a href="Controlador.php?ruta=eliminarMovimientos&idAct=<?php echo $listaDeMovimientos[$i]->idMovimientos; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
