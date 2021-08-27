@@ -2,7 +2,14 @@
 //echo "<pre>";
 //print_r($_SESSION['listaDeUsuarios']);
 //echo "</pre>";
+
+if (isset($_SESSION['mensaje'])){
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script languaje='javascript'>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,7 +42,6 @@ if(isset($_SESSION['listaDeUsuarios'])){
                 <th>tipo De Documento</th> 
                 <th>Documento</th> 
                 <th>Nombres</th> 
-                <!--<th>Estado</th>--> 
                 <th>Apellidos</th> 
                 <th>Fecha De Nacimiento</th> 
                 <th>Edad</th> 
@@ -54,13 +60,12 @@ if(isset($_SESSION['listaDeUsuarios'])){
                     <td><?php echo $listaDeUsuarios[$i]->usuTipoDocumento; ?></td>  
                     <td><?php echo $listaDeUsuarios[$i]->usuDocumento; ?></td> 
                     <td><?php echo $listaDeUsuarios[$i]->usuNombres; ?></td>  
-                    <td><?php echo $listaDeUsuarios[$i]->usuApellidos; ?></td>  
-                    <!--<td>d>-->  
+                    <td><?php echo $listaDeUsuarios[$i]->usuApellidos; ?></td> 
                     <td><?php echo $listaDeUsuarios[$i]->usuFechaNacimiento; ?></td>
                     <td><?php echo $listaDeUsuarios[$i]->usuEdad; ?></td>
                     <td><?php echo $listaDeUsuarios[$i]->usuEstrato; ?></td>
                     
-                    <td><a href="Controlador.php?ruta=actualizarUsuarios&idAct=<?php echo $listaDeUsuarios[$i]->isbn; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=actualizarUsuarios&idAct=<?php echo $listaDeUsuarios[$i]->idUsuarios ; ?>">Actualizar</a></td>  
                     <td><a href="Controlador.php?ruta=eliminarUsuarios&idAct=<?php echo $listaDeUsuarios[$i]->idUsuarios; ?>" onclick="return confirm('Está seguro de eliminar el Usuario?')">Eliminar</a></td>  
                 </tr>   
                 <?php
