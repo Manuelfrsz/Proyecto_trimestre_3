@@ -75,6 +75,32 @@ class ayudasDAO extends ConBdMySql{
     }
 
     public function actualizar($registro){
+        try{
+            $consejo = $registro[0]['ayuConsejo'];
+            $idAyudas = $registro[0]['idAyudas'];	
+			
+			
+			if(isset($idAyudas)){
+				
+                $actualizar = "UPDATE ayudas SET ayuConsejo= ?  ";
+                $actualizar .= " WHERE idAyudas= ? ; ";
+				
+				$actualizacion = $this->conexion->prepare($actualizar);
+				
+				$resultadoAct=$actualizacion->execute(array($consejo,$idAyudas));
+				
+				        $this->cierreBd();
+						
+				//MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];				
+				
+			}
+
+
+        } catch (PDOException $pdoExc) {
+			$this->cierreBd();
+            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        }
         
     }
 

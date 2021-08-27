@@ -16,6 +16,14 @@ class AyudasControlador {
             case "listarAyudas": //provisionalmente para trabajar con datatables
                 $this->listarAyudas();
                 break;
+            
+            case "actualizarAyudas": //provisionalmente para trabajar con datatables
+                    $this->actualizarAyudas();
+                    break;
+    
+            case "confirmaActualizarAyudas": //provisionalmente para trabajar con datatables
+                    $this->confirmaActualizarAyudas();
+                    break;    
         }
     }
 
@@ -30,6 +38,30 @@ class AyudasControlador {
         $_SESSION['listaDeAyudas'] = $registroAyudas;
 
         header("location:principal.php?contenido=vistas/vistasAyudas/listarDTRegistrosAyudas.php");
+    }
+
+    public function actualizarAyudas (){
+        $gestarAyudas = new AyudasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $consultaDeAyudas =$gestarAyudas->seleccionarId(array($this->datos['idAct']));//Se consulta el libro para traer los datos.
+
+        $actualizarDatosAyudas = $consultaDeAyudas['registroEncontrado'][0];
+
+        session_start();
+        $_SESSION['actualizarDatosAyudas'] = $actualizarDatosAyudas;
+        
+
+        header("location:principal.php?contenido=vistas/vistasAyudas/vistaActualizarAyudas.php");	
+
+    }
+
+    public function confirmaActualizarAyudas(){
+        $gestarAyudas = new AyudasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $actualizarAyudas = $gestarAyudas->actualizar(array($this->datos)); //Se envía datos del libro para actualizar. 				
+
+        session_start();
+        $_SESSION['mensaje'] = "Actualización realizada.";
+        header("location:Controlador.php?ruta=listarAyudas");	
+
     }
 
 }
