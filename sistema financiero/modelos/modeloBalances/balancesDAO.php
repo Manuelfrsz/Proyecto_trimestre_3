@@ -77,6 +77,32 @@ class balancesDAO extends ConBdMySql{
     }
 
     public function actualizar($registro){
+        try{
+            $balTotal = $registro[0]['balTotal'];
+            $idBalances = $registro[0]['idBalances'];	
+			
+			
+			if(isset($idBalances)){
+				
+                $actualizar = "UPDATE balances SET balTotal= ?  ";
+                $actualizar .= " WHERE idBalances= ? ; ";
+				
+				$actualizacion = $this->conexion->prepare($actualizar);
+				
+				$resultadoAct=$actualizacion->execute(array($balTotal, $idBalances));
+				
+				        $this->cierreBd();
+						
+				//MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];				
+				
+			}
+
+
+        } catch (PDOException $pdoExc) {
+			$this->cierreBd();
+            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        }
         
     }
 
