@@ -13,7 +13,7 @@ class movimientosDAO extends ConBdMySql{
         m.idMovimientos, m.Usuarios_idUsuarios, m.movTipo, m.movNombre, m.movCuentaUso, m.movValor, m.movFecha, 
         u.usuTipoDocumento, u.usuDocumento, u.usuNombres, u.usuApellidos, 
         c.idCuentas, c.cueTipo, c.cueSaldo,
-        b.idBalances, b.BalTotal ";
+        b.idBalances, b.balTotal ";
         $planconsulta.="FROM movimientos m ";
         $planconsulta.="JOIN usuarios u on m.Usuarios_idUsuarios = u.idUsuarios "; 
         $planconsulta.="JOIN cuentas c on m.Cuentas_idCuentas = c.idCuentas ";
@@ -58,12 +58,12 @@ class movimientosDAO extends ConBdMySql{
 
     public function insertar($registro){
         try {
-            $consulta = "insert into `movimientos`(`idmovimientos` , `Usuarios_idUsuarios` ,`Cuentas_idCuentas`, `Balances_idBalances`, `movEstado` , `movNumero` , `movTipo` , `movNombre` , `movCuentaUso` , `movValor` , `movFecha`)
-            values (:idmovimientos , :Usuarios_idUsuarios ,:Cuentas_idCuentas , :Balances_idBalances , :movEstado , :movNumero , :movTipo , :movNombre , :movCuentaUso , :movValor , :movFecha );";
+            $consulta = "insert into `movimientos`(`idMovimientos` , `Usuarios_idUsuarios` ,`Cuentas_idCuentas`, `Balances_idBalances`, `movEstado` , `movNumero` , `movTipo` , `movNombre` , `movCuentaUso` , `movValor` , `movFecha`)
+            values (:idMovimientos , :Usuarios_idUsuarios ,:Cuentas_idCuentas , :Balances_idBalances , :movEstado , :movNumero , :movTipo , :movNombre , :movCuentaUso , :movValor , :movFecha );";
 
             $insertar = $this->conexion->prepare($consulta);
 
-            $insertar->bindParam(":idmovimientos", $registro['idmovimientos']);
+            $insertar->bindParam(":idMovimientos", $registro['idMovimientos']);
             $insertar->bindParam(":Usuarios_idUsuarios", $registro['Usuarios_idUsuarios']);
             $insertar->bindParam(":Cuentas_idCuentas", $registro['Cuentas_idCuentas']);
             $insertar->bindParam(":Balances_idBalances", $registro['Balances_idBalances']);
@@ -88,15 +88,53 @@ class movimientosDAO extends ConBdMySql{
     }
 
     public function actualizar($registro){
-        
+        try{
+            $Cuentas_idCuentas = $registro[0]['Cuentas_idCuentas'];	
+            $numeroDeMovimiento = $registro[0]['movNumero'];
+            $tipoDeMovimiento = $registro[0]['movTipo'];
+            $nombreDeMovimiento = $registro[0]['movNombre'];
+            $cuentaDeUso = $registro[0]['movCuentaUso'];
+            $valorMovimiento = $registro[0]['movValor'];
+            $fechaMovimiento = $registro[0]['movFecha'];
+            $idMovimientos = $registro[0]['idMovimientos'];	
+            
+			
+			
+			if(isset($idMovimientos)){
+				
+                $actualizar = "UPDATE movimientos SET Cuentas_idCuentas = ? , ";
+                $actualizar .= " movNumero = ? , ";
+                $actualizar .= " movTipo = ? , ";
+                $actualizar .= " movNombre = ? , ";
+                $actualizar .= " movCuentaUso = ? , ";
+                $actualizar .= " movValor = ? , ";
+                $actualizar .= " movFecha = ?  "; 
+                $actualizar .= " WHERE idMovimientos= ? ; ";
+				
+				$actualizacion = $this->conexion->prepare($actualizar);
+				
+				$resultadoAct=$actualizacion->execute(array( $Cuentas_idCuentas, $numeroDeMovimiento, $tipoDeMovimiento, $nombreDeMovimiento, $cuentaDeUso, $valorMovimiento, $fechaMovimiento, $idMovimientos));
+				
+				        
+						
+				//MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];				
+				
+			}
+
+
+        } catch (PDOException $pdoExc) {
+			$this->cierreBd();
+            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        } 
     }
 
     public function eliminar($sId = array()){
         $planConsulta = "delete from movimientos ";
-        $planConsulta .= " where idmovimientos = :idmovimientos ;";
+        $planConsulta .= " where idMovimientos = :idMovimientos ;";
 
         $eliminar = $this->conexion->prepare($planConsulta);
-        $eliminar->bindParam(':idmovimientos', $sId[0], PDO::PARAM_INT);
+        $eliminar->bindParam(':idMovimientos', $sId[0], PDO::PARAM_INT);
         $resultado = $eliminar->execute();
 
         $this->cierreBd();
@@ -116,7 +154,7 @@ class movimientosDAO extends ConBdMySql{
             $cambiarEstado = 1;
 
             if (isset($sId[0])) {
-                $actualizar = "UPDATE movimientos SET movEstado = ? WHERE idmovimientos= ? ;";
+                $actualizar = "UPDATE movimientos SET movEstado = ? WHERE idMovimientos= ? ;";
                 $actualizacion = $this->conexion->prepare($actualizar);
                 $actualizacion = $actualizacion->execute(array($cambiarEstado, $sId[0]));
                 return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Activado."];
@@ -132,7 +170,7 @@ class movimientosDAO extends ConBdMySql{
             $cambiarEstado = 0;
 
             if (isset($sId[0])) {
-                $actualizar = "UPDATE movimientos SET movEstado = ? WHERE idmovimientos= ? ;";
+                $actualizar = "UPDATE movimientos SET movEstado = ? WHERE idMovimientos= ? ;";
                 $actualizacion = $this->conexion->prepare($actualizar);
                 $actualizacion = $actualizacion->execute(array($cambiarEstado, $sId[0]));
                 return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Desactivado."];
