@@ -79,6 +79,38 @@ class CuentasDAO extends ConBdMySql{
     }
 
     public function actualizar($registro){
+
+        try{
+            $cueTipo = $registro[0]['cueTipo'];
+            $cueNombre = $registro[0]['cueNombre'];
+            $cueSaldo = $registro[0]['cueSaldo'];
+            $idcue = $registro[0]['idCuentas'];	
+
+			
+			
+			if(isset($idcue)){
+				
+                $actualizar = "UPDATE cuentas SET cueTipo = ? , ";
+                $actualizar .= " cueNombre = ? , ";
+                $actualizar .= " cueSaldo = ? ";
+                $actualizar .= " WHERE idCuentas = ? ; ";
+				
+				$actualizacion = $this->conexion->prepare($actualizar);
+				
+				$resultadoAct=$actualizacion->execute(array($cueTipo,$cueNombre,$cueSaldo,$idcue));
+				
+				        $this->cierreBd();
+						
+				//MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
+                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];				
+				
+			}
+
+
+        } catch (PDOException $pdoExc) {
+			$this->cierreBd();
+            return ['actualizacion' => $resultadoAct, 'mensaje' => $pdoExc];
+        }
         
     }
 
