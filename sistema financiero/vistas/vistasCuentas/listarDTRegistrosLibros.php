@@ -1,15 +1,8 @@
 <?php
 //echo "<pre>";
-//print_r($_SESSION['listaDeBalances']);
+//print_r($_SESSION['listaDeLibros']);
 //echo "</pre>";
-if (isset($_SESSION['mensaje'])) {
-    $mensaje = $_SESSION['mensaje'];
-    echo "<script languaje='javascript'>alert('$mensaje')</script>";
-    unset($_SESSION['mensaje']);
-}    
 ?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,24 +21,22 @@ if (isset($_SESSION['mensaje'])) {
 	
 	<body>
 <?php
-if(isset($_SESSION['listaDeBalances'])){
+if(isset($_SESSION['listaDeLibros'])){
 	
-	 $listaDeBalances=$_SESSION['listaDeBalances'];
-	 unset($_SESSION['listaDeBalances']);
+	 $listaDeLibros=$_SESSION['listaDeLibros'];
+	 unset($_SESSION['listaDeLibros']);
 	
 }
 ?>
     <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>idUsuarios</th> 
-                <th>Tipo De Documento</th> 
-                <th>Documento</th> 
-                <th>Nombres</th> 
+                <th>Isbn</th> 
+                <th>Titulo</th> 
+                <th>Autor</th> 
+                <th>Precio</th> 
                 <!--<th>Estado</th>--> 
-                <th>Apellidos</th>
-                <th>Estrato</th>
-                <th>Total</th>
+                <th>Categoria</th> 
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -53,24 +44,22 @@ if(isset($_SESSION['listaDeBalances'])){
         <tbody>
             <?php
             $i = 0;
-            foreach ($listaDeBalances as $key => $value) {
+            foreach ($listaDeLibros as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $listaDeBalances[$i]->idBalances; ?></td>  
-                    <td><?php echo $listaDeBalances[$i]->usuTipoDocumento; ?></td>  
-                    <td><?php echo $listaDeBalances[$i]->usuDocumento; ?></td>  
-                    <td><?php echo $listaDeBalances[$i]->usuNombres; ?></td>
-                    <td><?php echo $listaDeBalances[$i]->usuApellidos; ?></td>
-                    <td><?php echo $listaDeBalances[$i]->usuEstrato; ?></td>
+                    <td><?php echo $listaDeLibros[$i]->isbn; ?></td>  
+                    <td><?php echo $listaDeLibros[$i]->titulo; ?></td>  
+                    <td><?php echo $listaDeLibros[$i]->autor; ?></td>  
+                    <td><?php echo $listaDeLibros[$i]->precio; ?></td>  
                     <!--<td>d>-->  
-                    <td><?php echo $listaDeBalances[$i]->balTotal; ?></td>  
-                    <td><a href="Controlador.php?ruta=actualizarBalances&idAct=<?php echo $listaDeBalances[$i]->idBalances; ?>">Actualizar</a></td>  
-                    <td><a href="Controlador.php?ruta=eliminarBalances&idAct=<?php echo $listaDeBalances[$i]->idBalances; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                    <td><?php echo $listaDeLibros[$i]->catLibNombre; ?></td>  
+                    <td><a href="Controlador.php?ruta=actualizarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>">Actualizar</a></td>  
+                    <td><a href="Controlador.php?ruta=eliminarLibro&idAct=<?php echo $listaDeLibros[$i]->isbn; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
                 </tr>   
                 <?php
                 $i++;
             }
-            $listaDeBalances=null;
+            $listaDeLibros=null;
             ?>
         </tbody>
     </table>
