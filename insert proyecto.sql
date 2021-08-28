@@ -22,17 +22,17 @@ values
 (2, 2, 1, 484000), 
 (3, 3, 1, 454500); 
 
-insert into `movimientos`(`idmovimientos` , `Usuarios_idUsuarios` ,`Cuentas_idCuentas`, `Balances_idBalances`, `movEstado` , `movNumero` , `movTipo` , `movNombre` , `movCuentaUso` , `movValor` , `movFecha`)
+insert into `movimientos`(`idmovimientos` , `Usuarios_idUsuarios` ,`Cuentas_idCuentas`, `movEstado` , `movTipo` , `movNombre` , `movCuentaUso` , `movValor` , `movFecha`)
 values
-(1, 2, 2, 2, 1, 1, 'Pago de nomina', 'sueldo', 'Ahorros banco Bogota', 454000, '2021-08-23'),
-(2, 1, 1, 1, 1, 2, 'Pago de nomina', 'sueldo', 'Nomina banco Davivienda', 454000, '2021-08-23'),
-(3, 3, 3, 3, 1, 3, 'Pago de nomina', 'sueldo', 'Nomina banco Bogota', 454000, '2021-08-23'),
-(4, 2, 4, 2, 1, 4, 'Compra', 'Celular', 'billetera luis', 70000, '2021-09-05'),
-(5, 1, 1, 1, 1, 5, 'Pago Cuota', 'Cuota computador', 'Nomina banco Davivienda', 200000, '2021-08-30'),
-(6, 1, 5, 1, 1, 6, 'Cuota pagada', 'Cuota pagada PC', 'Prestamo computador', 200000, '2021-08-30'),
-(7, 3, 7, 3, 1, 7, 'Compra', 'Canilleras y tenis', 'Bolsillo Oscar', 100000, '2021-09-03'),
-(8, 2, 2, 2, 1, 8, 'Retiro', 'Retiro 150000', 'Ahorros banco Bogota', 150000, '2021-09-07'),
-(9, 2, 4, 2, 1, 9, 'Ingreso', 'Sumo el retiro', 'billetera luis', 150000, '2021-09-07');
+(1, 2, 2, 1, 'Pago de nomina', 'sueldo', 'Ahorros banco Bogota', 454000, '2021-08-23'),
+(2, 1, 1, 1, 'Pago de nomina', 'sueldo', 'Nomina banco Davivienda', 454000, '2021-08-23'),
+(3, 3, 3, 1, 'Pago de nomina', 'sueldo', 'Nomina banco Bogota', 454000, '2021-08-23'),
+(4, 2, 4, 1, 'Compra', 'Celular', 'billetera luis', 70000, '2021-09-05'),
+(5, 1, 1, 1, 'Pago Cuota', 'Cuota computador', 'Nomina banco Davivienda', 200000, '2021-08-30'),
+(6, 1, 5, 1, 'Cuota pagada', 'Cuota pagada PC', 'Prestamo computador', 200000, '2021-08-30'),
+(7, 3, 7, 1, 'Compra', 'Canilleras y tenis', 'Bolsillo Oscar', 100000, '2021-09-03'),
+(8, 2, 2, 1, 'Retiro', 'Retiro 150000', 'Ahorros banco Bogota', 150000, '2021-09-07'),
+(9, 2, 4, 1, 'Ingreso', 'Sumo el retiro', 'billetera luis', 150000, '2021-09-07');
 
 insert into `soportes`(`idsoportes` , `Movimientos_idMovimientos` , `sopEstado` , `sopNomComprobante`)
 values 
@@ -79,3 +79,6 @@ values
 (8, 2, 1, 'pago servicio', 'pago internet hogar','2021-09-20'),
 (9, 1, 1, 'pago servicio', 'pagar plan de datos','2021-09-25'),
 (10, 3, 1, 'compra', 'comprar regalo amigo','2021-09-30');
+
+
+
