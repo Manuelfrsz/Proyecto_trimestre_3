@@ -1,7 +1,7 @@
 <?php
 
 //include_once "../modelos/ConstantesConexion.php";
-//include_once PATH."modelos/ConBdMysql.php";
+include_once "modelos/ConBdMysql.php";
 
 class CuentasDAO extends ConBdMySql{
     public function __construct($servidor, $base, $loginBD, $passwordBD){
@@ -53,14 +53,12 @@ class CuentasDAO extends ConBdMySql{
 
     public function insertar($registro){
         try {
-            $consulta = "insert into `cuentas`(`idCuentas` , `Usuarios_idUsuarios` , `cueEstado` , `cueTipo` , `cueNombre` , `cueSaldo`) 
-            values (:idCuentas , :Usuarios_idUsuarios , :cueEstado , :cueTipo, :cueNombre, :cueSaldo );";
+            $consulta = "insert into `cuentas`(`Usuarios_idUsuarios` , `cueTipo` , `cueNombre` , `cueSaldo`) 
+            values (:Usuarios_idUsuarios , :cueTipo, :cueNombre, :cueSaldo );";
 
             $insertar = $this->conexion->prepare($consulta);
 
-            $insertar->bindParam(":idCuentas", $registro['idCuentas']);
             $insertar->bindParam(":Usuarios_idUsuarios", $registro['Usuarios_idUsuarios']);
-            $insertar->bindParam(":cueEstado", $registro['cueEstado']);
             $insertar->bindParam(":cueTipo", $registro['cueTipo']);
             $insertar->bindParam(":cueNombre", $registro['cueNombre']);
             $insertar->bindParam(":cueSaldo", $registro['cueSaldo']);
@@ -70,7 +68,7 @@ class CuentasDAO extends ConBdMySql{
 
             $clavePrimaria = $this->conexion->lastInsertId();
 
-            return ['inserto' => 1, 'resultado' => $clavePrimaria];
+            return ['inserto' => true, 'resultado' => $clavePrimaria];
 
             $this->cierreBd();
         } catch (PDOException $pdoExc) {
@@ -88,7 +86,7 @@ class CuentasDAO extends ConBdMySql{
 
 			
 			
-			if(isset($idcue)){
+			if(isset($registro[0]['idCuentas'])){
 				
                 $actualizar = "UPDATE cuentas SET cueTipo = ? , ";
                 $actualizar .= " cueNombre = ? , ";
@@ -104,7 +102,7 @@ class CuentasDAO extends ConBdMySql{
 				//MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
                 return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];				
 				
-			}
+			} 
 
 
         } catch (PDOException $pdoExc) {

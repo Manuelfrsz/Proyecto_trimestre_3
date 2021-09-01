@@ -1,7 +1,7 @@
 <?php
 
 //include_once "../modelos/ConstantesConexion.php";
-//include_once PATH."modelos/ConBdMysql.php";
+include_once "modelos/ConBdMysql.php";
 
 class UsuariosDAO extends ConBdMySql{
     public function __construct($servidor, $base, $loginBD, $passwordBD){
@@ -44,21 +44,20 @@ class UsuariosDAO extends ConBdMySql{
         $this->cierreBd();
 
         if (!empty($registroEncontrado)) {
-            return ['exitoSeleccionId' => true, 'registroEncontrado' => $registroEncontrado];
+        return ['exitoSeleccionId' => true, 'registroEncontrado' => $registroEncontrado];
         } else {
-            return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
+        return ['exitoSeleccionId' => false, 'registroEncontrado' => $registroEncontrado];
         }
     }
 
     public function insertar($registro){
         try {
-            $consulta = "insert into `usuarios` (`idUsuarios`, `usuEstado`, `usuTipoDocumento`, `usuDocumento`, `usuNombres`, `usuApellidos`, `usuFechaNacimiento`, `usuEdad`, `usuEstrato`)
-            values (:idUsuarios , :usuEstado , :usuTipoDocumento , :usuDocumento, :usuNombres, :usuApellidos, :usuFechaNacimiento, :usuEdad, :usuEstrato );";
+            $consulta = "insert into `usuarios` (`usuTipoDocumento`, `usuDocumento`, `usuNombres`, `usuApellidos`, `usuFechaNacimiento`, `usuEdad`, `usuEstrato`)
+            values (:usuTipoDocumento , :usuDocumento, :usuNombres, :usuApellidos, :usuFechaNacimiento, :usuEdad, :usuEstrato );";
 
             $insertar = $this->conexion->prepare($consulta);
 
-            $insertar->bindParam(":idUsuarios", $registro['idUsuarios']);
-            $insertar->bindParam(":usuEstado", $registro['usuEstado']);
+           
             $insertar->bindParam(":usuTipoDocumento", $registro['usuTipoDocumento']);
             $insertar->bindParam(":usuDocumento", $registro['usuDocumento']);
             $insertar->bindParam(":usuNombres", $registro['usuNombres']);
@@ -72,7 +71,7 @@ class UsuariosDAO extends ConBdMySql{
 
             $clavePrimaria = $this->conexion->lastInsertId();
 
-            return ['inserto' => 1, 'resultado' => $clavePrimaria];
+            return ['inserto' => true, 'resultado' => $clavePrimaria];
 
             $this->cierreBd();
         } catch (PDOException $pdoExc) {

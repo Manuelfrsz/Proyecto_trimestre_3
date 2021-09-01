@@ -40,6 +40,17 @@ class ControladorPrincipal {
                 $this->confirmaActualizarLibro();
                 break;
 
+            case "cancelarActualizarLibro":
+                $this->cancelarActualizarLibro();
+                break;	
+            case "mostrarInsertarLibros":
+                $this->mostrarInsertarLibros();
+                break;
+
+            case "insertarLibro":
+                $this->insertarLibro();
+                break;	
+
             case "listarUsuarios":
                 $this->listarUsuarios();
                 break;
@@ -137,6 +148,21 @@ class ControladorPrincipal {
     }
 
     public function confirmaActualizarLibro() {
+
+        $librosControlador = new LibrosControlador($this->datos);
+    }
+
+    public function cancelarActualizarLibro() {
+
+        $librosControlador = new LibrosControlador($this->datos);
+    }	
+	
+    public function mostrarInsertarLibros() {
+
+        $librosControlador = new LibrosControlador($this->datos);
+    }	
+	
+    public function insertarLibro() {
 
         $librosControlador = new LibrosControlador($this->datos);
     }

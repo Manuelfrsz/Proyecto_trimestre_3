@@ -1,7 +1,7 @@
 <?php
 
 //include_once "../modelos/ConstantesConexion.php";
-//include_once PATH."modelos/ConBdMysql.php";
+include_once "modelos/ConBdMysql.php";
 
 class balancesDAO extends ConBdMySql{
     public function __construct($servidor, $base, $loginBD, $passwordBD){
@@ -53,14 +53,12 @@ class balancesDAO extends ConBdMySql{
 
     public function insertar($registro){
         try {
-            $consulta = "insert into `balances`(`idBalances`,`Usuarios_idUsuarios`, `balEstado`, `balTotal`)
-            values (:idBalances , :Usuarios_idUsuarios , :balEstado , :balTotal );";
+            $consulta = "insert into `balances`(`Usuarios_idUsuarios`, `balTotal`)
+            values ( :Usuarios_idUsuarios , :balTotal );";
 
             $insertar = $this->conexion->prepare($consulta);
 
-            $insertar->bindParam(":idBalances", $registro['idBalances']);
             $insertar->bindParam(":Usuarios_idUsuarios", $registro['Usuarios_idUsuarios']);
-            $insertar->bindParam(":balEstado", $registro['balEstado']);
             $insertar->bindParam(":balTotal", $registro['balTotal']);
             
             
@@ -68,7 +66,7 @@ class balancesDAO extends ConBdMySql{
 
             $clavePrimaria = $this->conexion->lastInsertId();
 
-            return ['inserto' => 1, 'resultado' => $clavePrimaria];
+            return ['inserto' => true, 'resultado' => $clavePrimaria];
 
             $this->cierreBd();
         } catch (PDOException $pdoExc) {

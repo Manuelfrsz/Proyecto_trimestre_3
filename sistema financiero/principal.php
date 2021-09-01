@@ -36,7 +36,7 @@ session_start();
 	 <br/>
 	 <a href="Controlador.php?ruta=listarLibros&pag=0">Listar Libros</a>
      <br/>
-     <a href="">Agregar Libros</a>   	 
+     <a href="Controlador.php?ruta=mostrarInsertarLibros">Agregar Libros</a>   	 
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Usuarios
 	 <br/>
