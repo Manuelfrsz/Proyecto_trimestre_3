@@ -881,6 +881,7 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
             "version": "9.5.8",
             "version_normalized": "9.5.8.0",
             "source": {
@@ -892,6 +893,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/191768ccd5c85513b4068bdbe99bb6390c7d54fb",
                 "reference": "191768ccd5c85513b4068bdbe99bb6390c7d54fb",
+=======
+            "version": "9.5.9",
+            "version_normalized": "9.5.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "ea8c2dfb1065eb35a79b3681eee6e6fb0a6f273b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ea8c2dfb1065eb35a79b3681eee6e6fb0a6f273b",
+                "reference": "ea8c2dfb1065eb35a79b3681eee6e6fb0a6f273b",
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
                 "shasum": ""
             },
             "require": {
@@ -932,7 +946,11 @@
                 "ext-soap": "*",
                 "ext-xdebug": "*"
             },
+<<<<<<< HEAD
             "time": "2021-07-31T15:17:34+00:00",
+=======
+            "time": "2021-08-31T06:47:40+00:00",
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
             "bin": [
                 "phpunit"
             ],
@@ -971,7 +989,11 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.8"
+=======
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.9"
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
             },
             "funding": [
                 {

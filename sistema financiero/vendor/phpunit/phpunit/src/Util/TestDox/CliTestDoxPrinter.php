@@ -301,7 +301,12 @@ class CliTestDoxPrinter extends TestDoxPrinter
 
         if ($this->colors) {
             $color  = self::STATUS_STYLES[$result['status']]['color'] ?? '';
+<<<<<<< HEAD
             $prefix = array_map(static function ($p) use ($color) {
+=======
+            $prefix = array_map(static function ($p) use ($color)
+            {
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
                 return Color::colorize($color, $p);
             }, self::PREFIX_DECORATED);
         }

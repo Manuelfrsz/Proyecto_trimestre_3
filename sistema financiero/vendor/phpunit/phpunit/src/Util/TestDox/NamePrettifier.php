@@ -147,7 +147,12 @@ final class NamePrettifier
 
         $annotationWithPlaceholders = false;
 
+<<<<<<< HEAD
         $callback = static function (string $variable): string {
+=======
+        $callback = static function (string $variable): string
+        {
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
             return sprintf('/%s(?=\b)/', preg_quote($variable, '/'));
         };
 
@@ -318,7 +323,12 @@ final class NamePrettifier
         }
 
         if ($this->useColor) {
+<<<<<<< HEAD
             $providedData = array_map(static function ($value) {
+=======
+            $providedData = array_map(static function ($value)
+            {
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
                 return Color::colorize('fg-cyan', Color::visualizeWhitespace((string) $value, true));
             }, $providedData);
         }

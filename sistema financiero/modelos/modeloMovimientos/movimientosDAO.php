@@ -1,7 +1,7 @@
 <?php
 
 //include_once "../modelos/ConstantesConexion.php";
-//include_once PATH."modelos/ConBdMysql.php";
+include_once"modelos/ConBdMysql.php";
 
 class movimientosDAO extends ConBdMySql{
     public function __construct($servidor, $base, $loginBD, $passwordBD){
@@ -12,12 +12,10 @@ class movimientosDAO extends ConBdMySql{
         $planconsulta = "SELECT 
         m.idMovimientos, m.Usuarios_idUsuarios, m.movTipo, m.movNombre, m.movCuentaUso, m.movValor, m.movFecha, 
         u.usuTipoDocumento, u.usuDocumento, u.usuNombres, u.usuApellidos, 
-        c.idCuentas, c.cueTipo, c.cueSaldo,
-        b.idBalances, b.balTotal ";
+        c.idCuentas, c.cueTipo, c.cueSaldo ";
         $planconsulta.="FROM movimientos m ";
         $planconsulta.="JOIN usuarios u on m.Usuarios_idUsuarios = u.idUsuarios "; 
         $planconsulta.="JOIN cuentas c on m.Cuentas_idCuentas = c.idCuentas ";
-        $planconsulta.="JOIN balances b on m.Balances_idBalances = b.idBalances ";
         $planconsulta.="order by m.idMovimientos ASC ";
 
         $registroMovimientos = $this->conexion->prepare($planconsulta);
@@ -58,17 +56,14 @@ class movimientosDAO extends ConBdMySql{
 
     public function insertar($registro){
         try {
-            $consulta = "insert into `movimientos`(`idMovimientos` , `Usuarios_idUsuarios` ,`Cuentas_idCuentas`, `Balances_idBalances`, `movEstado` , `movNumero` , `movTipo` , `movNombre` , `movCuentaUso` , `movValor` , `movFecha`)
-            values (:idMovimientos , :Usuarios_idUsuarios ,:Cuentas_idCuentas , :Balances_idBalances , :movEstado , :movNumero , :movTipo , :movNombre , :movCuentaUso , :movValor , :movFecha );";
+            $consulta = "insert into `movimientos`(`Usuarios_idUsuarios` ,`Cuentas_idCuentas`, `movTipo` , `movNombre` , `movCuentaUso` , `movValor` , `movFecha`)
+            values (:Usuarios_idUsuarios ,:Cuentas_idCuentas , :movTipo , :movNombre , :movCuentaUso , :movValor , :movFecha );";
 
             $insertar = $this->conexion->prepare($consulta);
 
-            $insertar->bindParam(":idMovimientos", $registro['idMovimientos']);
+            
             $insertar->bindParam(":Usuarios_idUsuarios", $registro['Usuarios_idUsuarios']);
             $insertar->bindParam(":Cuentas_idCuentas", $registro['Cuentas_idCuentas']);
-            $insertar->bindParam(":Balances_idBalances", $registro['Balances_idBalances']);
-            $insertar->bindParam(":movEstado", $registro['movEstado']);
-            $insertar->bindParam(":movNumero", $registro['movNumero']);
             $insertar->bindParam(":movTipo", $registro['movTipo']);
             $insertar->bindParam(":movNombre", $registro['movNombre']);
             $insertar->bindParam(":movCuentaUso", $registro['movCuentaUso']);
@@ -79,7 +74,7 @@ class movimientosDAO extends ConBdMySql{
 
             $clavePrimaria = $this->conexion->lastInsertId();
 
-            return ['inserto' => 1, 'resultado' => $clavePrimaria];
+            return ['inserto' => true, 'resultado' => $clavePrimaria];
 
             $this->cierreBd();
         } catch (PDOException $pdoExc) {
@@ -90,7 +85,6 @@ class movimientosDAO extends ConBdMySql{
     public function actualizar($registro){
         try{
             $Cuentas_idCuentas = $registro[0]['Cuentas_idCuentas'];	
-            $numeroDeMovimiento = $registro[0]['movNumero'];
             $tipoDeMovimiento = $registro[0]['movTipo'];
             $nombreDeMovimiento = $registro[0]['movNombre'];
             $cuentaDeUso = $registro[0]['movCuentaUso'];
@@ -103,7 +97,6 @@ class movimientosDAO extends ConBdMySql{
 			if(isset($idMovimientos)){
 				
                 $actualizar = "UPDATE movimientos SET Cuentas_idCuentas = ? , ";
-                $actualizar .= " movNumero = ? , ";
                 $actualizar .= " movTipo = ? , ";
                 $actualizar .= " movNombre = ? , ";
                 $actualizar .= " movCuentaUso = ? , ";
@@ -113,7 +106,7 @@ class movimientosDAO extends ConBdMySql{
 				
 				$actualizacion = $this->conexion->prepare($actualizar);
 				
-				$resultadoAct=$actualizacion->execute(array( $Cuentas_idCuentas, $numeroDeMovimiento, $tipoDeMovimiento, $nombreDeMovimiento, $cuentaDeUso, $valorMovimiento, $fechaMovimiento, $idMovimientos));
+				$resultadoAct=$actualizacion->execute(array( $Cuentas_idCuentas, $tipoDeMovimiento, $nombreDeMovimiento, $cuentaDeUso, $valorMovimiento, $fechaMovimiento, $idMovimientos));
 				
 				        
 						

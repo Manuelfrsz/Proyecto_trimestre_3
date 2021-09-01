@@ -243,7 +243,12 @@ final class Help
                     $arg = Color::colorize('fg-green', str_pad($option['arg'], $this->maxArgLength));
                     $arg = preg_replace_callback(
                         '/(<[^>]+>)/',
+<<<<<<< HEAD
                         static function ($matches) {
+=======
+                        static function ($matches)
+                        {
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
                             return Color::colorize('fg-cyan', $matches[0]);
                         },
                         $arg

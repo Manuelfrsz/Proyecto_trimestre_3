@@ -149,12 +149,21 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
+<<<<<<< HEAD
             'pretty_version' => '9.5.8',
             'version' => '9.5.8.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
             'reference' => '191768ccd5c85513b4068bdbe99bb6390c7d54fb',
+=======
+            'pretty_version' => '9.5.9',
+            'version' => '9.5.9.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpunit/phpunit',
+            'aliases' => array(),
+            'reference' => 'ea8c2dfb1065eb35a79b3681eee6e6fb0a6f273b',
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
             'dev_requirement' => true,
         ),
         'sebastian/cli-parser' => array(

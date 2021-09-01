@@ -20,7 +20,11 @@ final class CannotUseOnlyMethodsException extends \PHPUnit\Framework\Exception i
     {
         parent::__construct(
             sprintf(
+<<<<<<< HEAD
                 'Trying to set mock method "%s" with onlyMethods, but it does not exist in class "%s". Use addMethods() for methods that do not exist in the class',
+=======
+                'Trying to configure method "%s" with onlyMethods(), but it does not exist in class "%s". Use addMethods() for methods that do not exist in the class',
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
                 $methodName,
                 $type
             )

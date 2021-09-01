@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 define("BASE", "libros_lg"); //se define una constante para la base, de ahora en adelante BASE
+=======
+define("BASE", "asistente_financiero"); //se define una constante para la base, de ahora en adelante BASE
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
 //define("SERVIDOR", "127.0.0.1"); //se define una constante para el servidor, de ahora en adelante SERVIDOR
 define("SERVIDOR", "localhost"); //se define una constante para el servidor, de ahora en adelante SERVIDOR
 define("USUARIO_BD", "root"); //se define una constante para el usuario de la base, de ahora en adelante USUARIO_BD

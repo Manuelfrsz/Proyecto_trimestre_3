@@ -1174,7 +1174,12 @@ final class TestRunner extends BaseTestRunner
             $filterFactory->addFilter(
                 new ReflectionClass(IncludeGroupFilterIterator::class),
                 array_map(
+<<<<<<< HEAD
                     static function (string $name): string {
+=======
+                    static function (string $name): string
+                    {
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
                         return '__phpunit_covers_' . $name;
                     },
                     $arguments['testsCovering']
@@ -1186,7 +1191,12 @@ final class TestRunner extends BaseTestRunner
             $filterFactory->addFilter(
                 new ReflectionClass(IncludeGroupFilterIterator::class),
                 array_map(
+<<<<<<< HEAD
                     static function (string $name): string {
+=======
+                    static function (string $name): string
+                    {
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
                         return '__phpunit_uses_' . $name;
                     },
                     $arguments['testsUsing']

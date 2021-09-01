@@ -43,6 +43,7 @@ class ControladorPrincipal {
             case "cancelarActualizarLibro":
                 $this->cancelarActualizarLibro();
                 break;	
+<<<<<<< HEAD
             case "mostrarInsertarLibros":
                 $this->mostrarInsertarLibros();
                 break;
@@ -50,6 +51,16 @@ class ControladorPrincipal {
             case "insertarLibro":
                 $this->insertarLibro();
                 break;	
+=======
+                
+            case "mostrarInsertarLibros":
+                $this->mostrarInsertarLibros();
+                break;
+    
+            case "insertarLibro":
+                $this->insertarLibro();
+                break;
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
 
             case "listarUsuarios":
                 $this->listarUsuarios();
@@ -61,6 +72,22 @@ class ControladorPrincipal {
     
             case "confirmaActualizarUsuarios":
                 $this->confirmaActualizarUsuarios();
+                break;
+
+            case "cancelarActualizarUsuarios":
+                $this->cancelarActualizarUsuarios();
+                break;
+
+            case "mostrarInsertarUsuarios":
+                $this->mostrarInsertarUsuarios();
+                break;
+
+            case "insertarUsuarios":
+                $this->insertarUsuarios();
+                break;
+
+            case "cancelarInsertarUsuarios":
+                $this->cancelarInsertarUsuarios();
                 break;
             
             case "listarBalances":
@@ -176,6 +203,26 @@ class ControladorPrincipal {
     }
 
     public function confirmaActualizarUsuarios(){
+
+        $usuariosControlador = new usuariosControlador($this->datos);
+    }
+
+    public function cancelarActualizarUsuarios() {
+
+        $usuariosControlador = new usuariosControlador($this->datos);
+    }
+
+    public function mostrarInsertarUsuarios() {
+
+        $usuariosControlador = new usuariosControlador($this->datos);
+    }
+
+    public function insertarUsuarios() {
+
+        $usuariosControlador = new usuariosControlador($this->datos);
+    }
+
+    public function cancelarinsertarUsuarios() {
 
         $usuariosControlador = new usuariosControlador($this->datos);
     }

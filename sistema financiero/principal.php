@@ -42,7 +42,7 @@ session_start();
 	 <br/>
 	 <a href="Controlador.php?ruta=listarUsuarios&pag=0">Listar Usuarios</a>
      <br/>
-     <a href="">Agregar Usuarios</a>   	 
+     <a href="Controlador.php?ruta=mostrarInsertarUsuarios">Agregar Usuarios</a>   	 
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Cuentas
 	 <br/>

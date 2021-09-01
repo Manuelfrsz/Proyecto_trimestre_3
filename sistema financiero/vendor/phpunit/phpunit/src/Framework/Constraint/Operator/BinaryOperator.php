@@ -37,7 +37,12 @@ abstract class BinaryOperator extends Operator
      */
     public function setConstraints(array $constraints): void
     {
+<<<<<<< HEAD
         $this->constraints = array_map(function ($constraint): Constraint {
+=======
+        $this->constraints = array_map(function ($constraint): Constraint
+        {
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
             return $this->checkConstraint($constraint);
         }, array_values($constraints));
     }

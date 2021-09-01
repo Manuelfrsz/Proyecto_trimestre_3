@@ -5,7 +5,6 @@ include_once PATH."modelos/ConBdMysql.php";
 include_once PATH.'modelos/modeloUsuarios/UsuariosDAO.php';
 
 
-$registro['idUsuarios']=4;
 $registro['usuEstado']=1;
 $registro['usuTipoDocumento']="cc";
 $registro['usuDocumento']=1034576342;

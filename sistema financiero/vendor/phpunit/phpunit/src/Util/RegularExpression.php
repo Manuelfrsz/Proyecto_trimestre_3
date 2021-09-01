@@ -22,7 +22,12 @@ final class RegularExpression
     public static function safeMatch(string $pattern, string $subject)
     {
         return ErrorHandler::invokeIgnoringWarnings(
+<<<<<<< HEAD
             static function () use ($pattern, $subject) {
+=======
+            static function () use ($pattern, $subject)
+            {
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
                 return preg_match($pattern, $subject);
             }
         );

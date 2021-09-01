@@ -72,4 +72,8 @@ if (isset($_SESSION['mensaje'])) {
             </table>
         </form>
     </fieldset>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba

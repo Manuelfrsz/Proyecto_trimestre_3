@@ -31,7 +31,11 @@ final class VersionComparisonOperator
     }
 
     /**
+<<<<<<< HEAD
      * @return '<'|'lt'|'<='|'le'|'>'|'gt'|'>='|'ge'|'=='|'='|'eq'|'!='|'<>'|'ne'
+=======
+     * @return '!='|'<'|'<='|'<>'|'='|'=='|'>'|'>='|'eq'|'ge'|'gt'|'le'|'lt'|'ne'
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
      */
     public function asString(): string
     {

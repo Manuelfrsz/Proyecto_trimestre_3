@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 //include_once "../modelos/ConstantesConexion.php";
+=======
+//include_once "modelos/ConstantesConexion.php";
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
 include_once "modelos/ConBdMysql.php";
 
 class UsuariosDAO extends ConBdMySql{
@@ -57,7 +61,10 @@ class UsuariosDAO extends ConBdMySql{
 
             $insertar = $this->conexion->prepare($consulta);
 
+<<<<<<< HEAD
            
+=======
+>>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
             $insertar->bindParam(":usuTipoDocumento", $registro['usuTipoDocumento']);
             $insertar->bindParam(":usuDocumento", $registro['usuDocumento']);
             $insertar->bindParam(":usuNombres", $registro['usuNombres']);
@@ -110,7 +117,7 @@ class UsuariosDAO extends ConBdMySql{
 				        
 						
 				//MEJORAR LA SALIDA DE LOS DATOS DE ACTUALIZACIÓN EXITOSA
-                return ['actualizacion' => $resultadoAct, 'mensaje' => "Actualización realizada."];				
+                return ['actualizacion' => true, 'mensaje' => "Actualización realizada."];				
 				
 			}
 
