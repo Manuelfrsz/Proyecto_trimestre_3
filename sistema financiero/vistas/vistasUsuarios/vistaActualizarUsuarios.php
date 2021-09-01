@@ -80,7 +80,7 @@ if (isset($_SESSION['actualizarDatosUsuarios'])) {
                 </tr>                
                 <tr>            
                     <td>            
-                        <button type="reset" name="ruta" value="cancelarActualizarUsuarios">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="cancelarActualizarUsuarios">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarUsuarios">Actualizar Usuario</button>
                     </td>
                 </tr>             

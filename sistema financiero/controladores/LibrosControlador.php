@@ -22,7 +22,19 @@ class LibrosControlador {
                 break;
             case "confirmaActualizarLibro": //provisionalmente para trabajar con datatables
                 $this->confirmaActualizarLibro();
-                break;					
+                break;
+                
+            case "cancelarActualizarLibro": //provisionalmente para trabajar con datatables
+                $this->cancelarActualizarLibro();
+                break;	
+                
+            case "mostrarInsertarLibros": //provisionalmente para trabajar con datatables
+                $this->mostrarInsertarLibros();
+                break;	
+    
+            case "insertarLibro": //provisionalmente para trabajar con datatables
+                $this->insertarLibro();
+                break;
         }
     }
 
@@ -68,6 +80,63 @@ class LibrosControlador {
                 header("location:Controlador.php?ruta=listarLibros");	
 		
 	}
+
+    public function cancelarActualizarLibro(){
+        session_start();
+        $_SESSION['mensaje'] = "Desistió de la actualización";
+        header("location:Controlador.php?ruta=listarLibros");	
+    }
+
+    public function mostrarInsertarLibros(){
+
+
+
+        /*                 * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
+        $gestarCategoriaLibros = new CategoriaLibroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $registroCategoriasLibros = $gestarCategoriaLibros->seleccionarTodos();
+        /*                 * ************************************************************************* */
+
+        session_start();
+        $_SESSION['registroCategoriasLibros'] = $registroCategoriasLibros;
+        $registroCategoriasLibros = null;
+
+        header("Location: principal.php?contenido=vistas/vistasLibros/vistaInsertarLibro.php");
+
+    }
+
+    public function insertarLibro(){
+
+        //Se instancia LibroDAO para insertar
+        $buscarLibro = new LibroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
+        //Se consulta si existe ya el registro
+        $libroHallado = $buscarLibro->seleccionarId(array($this->datos['isbn']));
+        //Si no existe el libro en la base se procede a insertar ****  		
+        if (!$libroHallado['exitoSeleccionId']) {
+            $insertarLibro = new LibroDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
+            $insertoLibro = $insertarLibro->insertar($this->datos);  //inserción de los campos en la tabla libros 
+
+            $resultadoInsercionLibro = $insertoLibro['resultado'];  //Traer el id con que quedó el libro de lo contrario la excepción o fallo  
+
+            session_start();
+           $_SESSION['mensaje'] = "Registrado " . $this->datos['isbn'] . " con éxito.  Agregado Nuevo Libro con " . $resultadoInsercionLibro;					
+            
+            header("location:Controlador.php?ruta=listarLibros");
+            
+        }else{// Si existe se retornan los datos y se envía el mensaje correspondiente ****
+        
+            session_start();
+            $_SESSION['isbn'] = $this->datos['isbn'];
+            $_SESSION['titulo'] = $this->datos['titulo'];
+            $_SESSION['autor'] = $this->datos['autor'];
+            $_SESSION['precio'] = $this->datos['precio'];
+            $_SESSION['categoriaLibro_catLibId'] = $this->datos['categoriaLibro_catLibId'];					
+            
+            $_SESSION['mensaje'] = "   El código " . $this->datos['isbn'] . " ya existe en el sistema.";
+
+            header("location:Controlador.php?ruta=mostrarInsertarLibros");					
+
+        }					
+    }
 
 }
 

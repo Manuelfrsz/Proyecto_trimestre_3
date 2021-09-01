@@ -46,8 +46,7 @@ if(isset($_SESSION['listaDeMovimientos'])){
                 <th>Fecha</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
-                <th>saldo de Cuenta</th>
-                <th>Balance</th>         
+                <th>saldo de Cuenta</th>         
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr>
@@ -67,8 +66,7 @@ if(isset($_SESSION['listaDeMovimientos'])){
                     <td><?php echo $listaDeMovimientos[$i]->movFecha; ?></td>
                     <td><?php echo $listaDeMovimientos[$i]->usuNombres; ?></td>
                     <td><?php echo $listaDeMovimientos[$i]->usuApellidos; ?></td>
-                    <td><?php echo $listaDeMovimientos[$i]->cueSaldo; ?></td>   
-                    <td><?php echo $listaDeMovimientos[$i]->balTotal; ?></td> 
+                    <td><?php echo $listaDeMovimientos[$i]->cueSaldo; ?></td>    
 
                     <td><a href="Controlador.php?ruta=actualizarMovimientos&idAct=<?php echo $listaDeMovimientos[$i]->idMovimientos; ?>">Actualizar</a></td>  
                     <td><a href="Controlador.php?ruta=eliminarMovimientos&idAct=<?php echo $listaDeMovimientos[$i]->idMovimientos; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
