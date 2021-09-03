@@ -91,7 +91,7 @@ if (isset($_SESSION['registroCuentas'])) { /* * ************************ */
                 </tr>                
                 <tr>            
                     <td>            
-                        <button type="reset" name="ruta" value="cancelarActualizarMovimientos">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="cancelarActualizarMovimientos">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarMovimientos">Actualizar Movimiento</button>
                     </td>
                 </tr>             
