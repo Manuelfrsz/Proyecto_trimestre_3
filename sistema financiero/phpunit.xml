@@ -3,6 +3,7 @@
     <testsuite name="Test Directorio">
         <directory>./tests/testsCategoriaLibroDAO</directory> 
         <directory>./tests/testsLibroDAO</directory> 
+                <directory>./tests/testsSoportesDAO</directory> 
     </testsuite>
     <php>
     </php>

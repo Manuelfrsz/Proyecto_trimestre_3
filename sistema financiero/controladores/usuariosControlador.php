@@ -45,7 +45,7 @@ class usuariosControlador{
 
     public function listarUsuarios() {
 
-        $gestarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $gestarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
         $registroUsuarios = $gestarUsuarios->seleccionarTodos();
 
         session_start();
@@ -57,7 +57,7 @@ class usuariosControlador{
     }
 
     public function actualizarUsuarios (){
-        $gestarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $gestarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
         $consultaDeUsuarios =$gestarUsuarios->seleccionarId(array($this->datos['idAct']));//Se consulta el libro para traer los datos.
 
         $actualizarDatosUsuarios = $consultaDeUsuarios['registroEncontrado'][0];
@@ -70,7 +70,7 @@ class usuariosControlador{
     }
 
     public function confirmaActualizarUsuarios(){
-        $gestarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $gestarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
         $actualizarUsuarios = $gestarUsuarios->actualizar(array($this->datos)); //Se envía datos del libro para actualizar. 				
 
         session_start();
@@ -102,12 +102,12 @@ class usuariosControlador{
     public function insertarUsuarios(){
 
         //Se instancia usuariosDAO para insertar
-        $buscarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
+        $buscarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
         //Se consulta si existe ya el registro
         $UsuariosHallado = $buscarUsuarios->seleccionarId(array($this->datos['idUsuarios']));
         //Si no existe el usuario en la base se procede a insertar ****  		
         if (!$UsuariosHallado['exitoSeleccionId']){
-            $insertarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
+            $insertarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
             $insertoUsuarios = $insertarUsuarios->insertar($this->datos);  //inserción de los campos en la tabla usuarios 
 
             $resultadoInsercionUsuarios = $insertoUsuarios['resultado'];  //Traer el id con que quedó el usuario de lo contrario la excepción o fallo  

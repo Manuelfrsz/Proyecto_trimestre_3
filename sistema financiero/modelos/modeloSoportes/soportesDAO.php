@@ -1,7 +1,7 @@
 <?php
 
 //include_once "../modelos/ConstantesConexion.php";
-//include_once PATH."modelos/ConBdMysql.php";
+include_once "modelos/ConBdMysql.php";
 
 class SoportesDAO extends ConBdMySql{
     public function __construct($servidor, $base, $loginBD, $passwordBD){
@@ -53,14 +53,12 @@ class SoportesDAO extends ConBdMySql{
 
     public function insertar($registro){
         try {
-            $consulta = "insert into `soportes`(`idSoportes`, `Movimientos_idMovimientos`, `sopEstado`, `sopNomComprobante`)
-            values (:idSoportes , :Movimientos_idMovimientos , :sopEstado , :sopNomComprobante );";
+            $consulta = "insert into `soportes`( `Movimientos_idMovimientos`, `sopNomComprobante`)
+            values (:Movimientos_idMovimientos , :sopNomComprobante );";
 
             $insertar = $this->conexion->prepare($consulta);
 
-            $insertar->bindParam(":idSoportes", $registro['idSoportes']);
             $insertar->bindParam(":Movimientos_idMovimientos", $registro['Movimientos_idMovimientos']);
-            $insertar->bindParam(":sopEstado", $registro['sopEstado']);
             $insertar->bindParam(":sopNomComprobante", $registro['sopNomComprobante']);
             
             
@@ -68,7 +66,7 @@ class SoportesDAO extends ConBdMySql{
 
             $clavePrimaria = $this->conexion->lastInsertId();
 
-            return ['inserto' => 1, 'resultado' => $clavePrimaria];
+            return ['inserto' => true, 'resultado' => $clavePrimaria];
 
             $this->cierreBd();
         } catch (PDOException $pdoExc) {

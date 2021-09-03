@@ -43,7 +43,7 @@ class ControladorPrincipal {
             case "cancelarActualizarLibro":
                 $this->cancelarActualizarLibro();
                 break;	
-<<<<<<< HEAD
+                
             case "mostrarInsertarLibros":
                 $this->mostrarInsertarLibros();
                 break;
@@ -51,16 +51,6 @@ class ControladorPrincipal {
             case "insertarLibro":
                 $this->insertarLibro();
                 break;	
-=======
-                
-            case "mostrarInsertarLibros":
-                $this->mostrarInsertarLibros();
-                break;
-    
-            case "insertarLibro":
-                $this->insertarLibro();
-                break;
->>>>>>> f95fa2af1207193365527f782599d26e4c6a72ba
 
             case "listarUsuarios":
                 $this->listarUsuarios();
