@@ -1,16 +1,16 @@
 <?php
 
 require_once "modelos/ConstantesConexion.php";
-require_once "modelos/modeloUsuarios/usuariosDAO.php";
+require_once "modelos/modeloCalendarios/calendariosDAO.php";
 
 use PHPUnit\Framework\TestCase;
 
-final class UsuariosDAOTest extends TestCase {
+final class CalendariosDAOTest extends TestCase {
 
     private $op;
 
     public function setUp(): void {
-        $this->op = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $this->op = new calendariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
     }
 
     public function testSeleccionarTodos() {
@@ -24,27 +24,21 @@ final class UsuariosDAOTest extends TestCase {
     }
 
     public function testInsertar(){
-        $usuTipoDOC = readline("Para provar insertar: ingrese tipo de documento: ");
-        $numDoc = readline("ingrese documento: ");
-        $nombres = readline("ingrese nombres: ");
-        $apellidos = readline("ingrese apellidos: ");
-        $fecNac = readline("ingrese fecha de nacimiento: ");
-        $edad = readline("ingrese su edad: ");
-        $estrato = readline("ingrese su estrato: ");
-        $realizado = $this->op->insertar($dato = array('usuTipoDocumento' => $usuTipoDOC, 'usuDocumento' => $numDoc, 'usuNombres' => $nombres, 'usuApellidos' => $apellidos, 'usuFechaNacimiento' =>$fecNac, 'usuEdad' => $edad, 'usuEstrato' => $estrato));
+        $usuIdUsu = readline("Para provar insertar: ingrese id del usuario: ");
+        $calTipoPago = readline("ingrese tipo de pago: ");
+        $calNomPago = readline("ingrese nombre de pago: ");
+        $calFecha = readline("ingrese fecha de pago: ");
+        $realizado = $this->op->insertar($dato = array('Usuarios_idUsuarios' => $usuIdUsu, 'calTipoPago' => $calTipoPago, 'calNomPago' => $calNomPago, 'calFechaPago' => $calFecha));
         $this->assertTrue(($realizado['inserto']));
     }
 
     public function testActualizar(){
         $id = readline("Para provar Actualizar: ingrese el id del registro que quiere modificar: ");
-        $usuTipoDOC = readline("ingrese tipo de documento: ");
-        $numDoc = readline("ingrese documento: ");
-        $nombres = readline("ingrese nombres: ");
-        $apellidos = readline("ingrese apellidos: ");
-        $fecNac = readline("ingrese fecha de nacimiento: ");
-        $edad = readline("ingrese su edad: ");
-        $estrato = readline("ingrese su estrato: ");
-        $realizado = $this->op->actualizar($dato = array(array('usuTipoDocumento' => $usuTipoDOC, 'usuDocumento' => $numDoc, 'usuNombres' => $nombres, 'usuApellidos' => $apellidos, 'usuFechaNacimiento' =>$fecNac, 'usuEdad' => $edad, 'usuEstrato' => $estrato, 'idUsuarios' => $id)));
+        $usuIdUsu = readline("Para provar insertar: ingrese id del usuario: ");
+        $calTipoPago = readline("ingrese tipo de pago: ");
+        $calNomPago = readline("ingrese nombre de pago: ");
+        $calFecha = readline("ingrese fecha de pago: ");
+        $realizado = $this->op->actualizar($dato = array(array('Usuarios_idUsuarios' => $usuIdUsu, 'calTipoPago' => $calTipoPago, 'calNomPago' => $calNomPago, 'calFechaPago' => $calFecha, 'idCalendarios' => $id)));
         $this->assertTrue(($realizado['actualizacion']));
     }
 

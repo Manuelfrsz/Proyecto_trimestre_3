@@ -1,7 +1,7 @@
 <?php
 
 //include_once "../modelos/ConstantesConexion.php";
-//include_once PATH."modelos/ConBdMysql.php";
+include_once "modelos/ConBdMysql.php";
 
 class calendariosDAO extends ConBdMySql{
     public function __construct($servidor, $base, $loginBD, $passwordBD){
@@ -52,14 +52,13 @@ class calendariosDAO extends ConBdMySql{
 
     public function insertar($registro){
         try {
-            $consulta = "insert into `calendarios`(`idcalendarios` , `Usuarios_idUsuarios` , `calEstado` , `calTipoPago` , `calNomPago` , `calFechaPago`)
-            values (:idcalendarios , :Usuarios_idUsuarios , :calEstado , :calTipoPago , :calNomPago , :calFechaPago );";
+            $consulta = "insert into `calendarios`(`Usuarios_idUsuarios` , `calTipoPago` , `calNomPago` , `calFechaPago`)
+            values (:Usuarios_idUsuarios , :calTipoPago , :calNomPago , :calFechaPago );";
 
             $insertar = $this->conexion->prepare($consulta);
 
-            $insertar->bindParam(":idcalendarios", $registro['idcalendarios']);
+        
             $insertar->bindParam(":Usuarios_idUsuarios", $registro['Usuarios_idUsuarios']);
-            $insertar->bindParam(":calEstado", $registro['calEstado']);
             $insertar->bindParam(":calTipoPago", $registro['calTipoPago']);
             $insertar->bindParam(":calNomPago", $registro['calNomPago']);
             $insertar->bindParam(":calFechaPago", $registro['calFechaPago']);
@@ -68,7 +67,7 @@ class calendariosDAO extends ConBdMySql{
 
             $clavePrimaria = $this->conexion->lastInsertId();
 
-            return ['inserto' => 1, 'resultado' => $clavePrimaria];
+            return ['inserto' => true, 'resultado' => $clavePrimaria];
 
             $this->cierreBd();
         } catch (PDOException $pdoExc) {
