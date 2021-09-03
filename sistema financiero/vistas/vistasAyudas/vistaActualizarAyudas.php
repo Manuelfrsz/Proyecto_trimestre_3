@@ -36,7 +36,7 @@ echo "<pre>"; */
                 </tr>
                     <tr>            
                     <td>            
-                        <button type="reset" name="ruta" value="cancelarActualizarAyudas">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="cancelarActualizarAyudas">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarAyudas">Actualizar Balances</button>
                     </td>
                 </tr>             

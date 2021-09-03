@@ -49,7 +49,7 @@ if (isset($_SESSION['actualizarDatosCalendarios'])) {
                 </tr>          
                 <tr>            
                     <td>            
-                        <button type="reset" name="ruta" value="cancelarActualizarCalendarios">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="cancelarActualizarCalendarios">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarCalendarios">Actualizar Calendario</button>
                     </td>
                 </tr>             

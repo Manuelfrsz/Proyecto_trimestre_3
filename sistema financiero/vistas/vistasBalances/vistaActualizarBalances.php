@@ -30,13 +30,13 @@ echo "<pre>"; */
                     <td>                  
                         <input class="form-control" placeholder="Balance total" name="balTotal" type="number"  required="required" 
                                value="<?php 
-									if(isset($actualizarDatosBalances->balTotal)){ echo $actualizarDatosBalances->balTotal; }
+									if(isset($actualizarDatosBalances->BalTotal)){ echo $actualizarDatosBalances->BalTotal; }
 							   ?>">
                     </td>
                 </tr>
                 <tr>            
                     <td>            
-                        <button type="reset" name="ruta" value="cancelarActualizarBalances">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="cancelarActualizarBalances">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarBalances">Actualizar Balances</button>
                     </td>
                 </tr>             

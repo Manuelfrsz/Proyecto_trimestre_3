@@ -52,7 +52,7 @@ echo "<pre>"; */
                 </tr>               
                 <tr>            
                     <td>            
-                        <button type="reset" name="ruta" value="cancelarActualizarCuentas">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="cancelarActualizarCuentas">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarCuentas">Actualizar Cuenta</button>
                     </td>
                 </tr>             

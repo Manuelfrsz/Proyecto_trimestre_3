@@ -24,6 +24,22 @@ class calendariosControlador {
             case "confirmaActualizarCalendarios": //provisionalmente para trabajar con datatables
                 $this->confirmaActualizarCalendarios();
                 break;
+
+            case "cancelarActualizarCalendarios":
+                $this->cancelarActualizarCalendarios();
+                break;
+                
+           /* case "mostrarInsertarCalendarios": 
+                $this->mostrarInsertarCalendarios();
+                break;
+                    
+            case "insertarCalendarios": 
+                $this->insertarCalendarios();
+                break;
+
+            case "cancelarInsertarCalendarios":
+                $this->cancelarInsertarCalendarios();
+                break;*/
         }
     }
 
@@ -63,6 +79,12 @@ class calendariosControlador {
         $_SESSION['mensaje'] = "Actualización realizada.";
         header("location:Controlador.php?ruta=listarCalendarios");	
 
+    }
+
+    public function cancelarActualizarCalendarios(){
+        session_start();
+        $_SESSION['mensaje'] = "Desistió de la actualización";
+        header("location:Controlador.php?ruta=listarCalendarios");	
     }
 
 }

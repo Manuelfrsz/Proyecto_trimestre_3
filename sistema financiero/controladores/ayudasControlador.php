@@ -24,6 +24,22 @@ class AyudasControlador {
             case "confirmaActualizarAyudas": //provisionalmente para trabajar con datatables
                     $this->confirmaActualizarAyudas();
                     break;    
+
+            case "cancelarActualizarAyudas":
+                $this->cancelarActualizarAyudas();
+                break;
+                
+           /* case "mostrarInsertarAyudas": 
+                $this->mostrarInsertarAyudas();
+                break;
+                    
+            case "insertarAyudas": 
+                $this->insertarAyudas();
+                break;
+
+            case "cancelarInsertarAyudas":
+                $this->cancelarInsertarAyudas();
+                break;*/
         }
     }
 
@@ -62,6 +78,12 @@ class AyudasControlador {
         $_SESSION['mensaje'] = "Actualización realizada.";
         header("location:Controlador.php?ruta=listarAyudas");	
 
+    }
+
+    public function cancelarActualizarAyudas(){
+        session_start();
+        $_SESSION['mensaje'] = "Desistió de la actualización";
+        header("location:Controlador.php?ruta=listarAyudas");	
     }
 
 }

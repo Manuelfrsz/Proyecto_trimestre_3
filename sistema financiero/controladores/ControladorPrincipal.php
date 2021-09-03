@@ -90,7 +90,23 @@ class ControladorPrincipal {
     
             case "confirmaActualizarBalances":
                 $this->confirmaActualizarBalances();
-                break;    
+                break;  
+                
+            case "cancelarActualizarBalances":
+                $this->cancelarActualizarBalances();
+                break;
+
+            case "mostrarInsertarBalances":
+                $this->mostrarInsertarBalances();
+                break;
+
+            case "insertarBalances":
+                $this->insertarBalances();
+                break;
+
+            case "cancelarInsertarBalances":
+                $this->cancelarInsertarBalances();
+                break;
                 
             case "listarCuentas":
                 $this->listarCuentas();
@@ -103,6 +119,22 @@ class ControladorPrincipal {
             case "confirmaActualizarCuentas":
                 $this->confirmaActualizarCuentas();
                 break; 
+
+            case "cancelarActualizarCuentas":
+                $this->cancelarActualizarCuentas();
+                break;
+
+            case "mostrarInsertarCuentas":
+                $this->mostrarInsertarCuentas();
+                break;
+
+            case "insertarCuentas":
+                $this->insertarCuentas();
+                break;
+
+            case "cancelarInsertarCuentas":
+                $this->cancelarInsertarCuentas();
+                break;
                 
             case "listarCalendarios":
                 $this->listarCalendarios();
@@ -114,6 +146,22 @@ class ControladorPrincipal {
     
             case "confirmaActualizarCalendarios":
                 $this->confirmaActualizarCalendarios();
+                break;
+
+            case "cancelarActualizarCalendarios":
+                $this->cancelarActualizarCalendarios();
+                break;
+
+            case "mostrarInsertarCalendarios":
+                $this->mostrarInsertarCalendarios();
+                break;
+
+            case "insertarCalendarios":
+                $this->insertarCalendarios();
+                break;
+
+            case "cancelarInsertarCalendarios":
+                $this->cancelarInsertarCalendarios();
                 break;
 
             case "listarMovimientos":
@@ -152,6 +200,22 @@ class ControladorPrincipal {
 
             case "confirmaActualizarAyudas":
                 $this->confirmaActualizarAyudas();
+                break;
+
+            case "cancelarActualizarAyudas":
+                $this->cancelarActualizarAyudas();
+                break;
+
+            case "mostrarInsertarAyudas":
+                $this->mostrarInsertarAyudas();
+                break;
+
+            case "insertarAyudas":
+                $this->insertarAyudas();
+                break;
+
+            case "cancelarInsertarAyudas":
+                $this->cancelarInsertarAyudas();
                 break;
         }
     }
@@ -230,6 +294,26 @@ class ControladorPrincipal {
         $balancesControlador = new balancesControlador($this->datos);
     }
 
+    public function cancelarActualizarBalances() {
+
+        $BalancesControlador = new BalancesControlador($this->datos);
+    }
+
+    public function mostrarInsertarBalances() {
+
+        $BalancesControlador = new BalancesControlador($this->datos);
+    }
+
+    public function insertarBalances() {
+
+        $BalancesControlador = new BalancesControlador($this->datos);
+    }
+
+    public function cancelarinsertarBalances() {
+
+        $BalancesControlador = new BalancesControlador($this->datos);
+    }
+
     public function listarCuentas() {
         $cuentasControlador = new cuentasControlador($this->datos);
     }
@@ -243,6 +327,26 @@ class ControladorPrincipal {
         $cuentasControlador = new cuentasControlador($this->datos);
     }
 
+    public function cancelarActualizarCuentas() {
+
+        $CuentasControlador = new CuentasControlador($this->datos);
+    }
+
+    public function mostrarInsertarCuentas() {
+
+        $CuentasControlador = new CuentasControlador($this->datos);
+    }
+
+    public function insertarCuentas() {
+
+        $CuentasControlador = new CuentasControlador($this->datos);
+    }
+
+    public function cancelarinsertarCuentas() {
+
+        $CuentasControlador = new CuentasControlador($this->datos);
+    }
+
     public function listarCalendarios() {
         $calendariosControlador = new calendariosControlador($this->datos);
     }
@@ -254,6 +358,26 @@ class ControladorPrincipal {
     public function confirmaActualizarCalendarios() {
 
         $calendariosControlador = new calendariosControlador($this->datos);
+    }
+
+    public function cancelarActualizarCalendarios() {
+
+        $CalendariosControlador = new CalendariosControlador($this->datos);
+    }
+
+    public function mostrarInsertarCalendarios() {
+
+        $CalendariosControlador = new CalendariosControlador($this->datos);
+    }
+
+    public function insertarCalendarios() {
+
+        $CalendariosControlador = new CalendariosControlador($this->datos);
+    }
+
+    public function cancelarinsertarCalendarios() {
+
+        $CalendariosControlador = new CalendariosControlador($this->datos);
     }
 
     public function listarMovimientos() {
@@ -291,6 +415,26 @@ class ControladorPrincipal {
     }
 
     public function confirmaActualizarAyudas() {
+
+        $AyudasControlador = new AyudasControlador($this->datos);
+    }
+
+    public function cancelarActualizarAyudas() {
+
+        $AyudasControlador = new AyudasControlador($this->datos);
+    }
+
+    public function mostrarInsertarAyudas() {
+
+        $AyudasControlador = new CuentasControlador($this->datos);
+    }
+
+    public function insertarAyudas() {
+
+        $AyudasControlador = new AyudasControlador($this->datos);
+    }
+
+    public function cancelarinsertarAyudas() {
 
         $AyudasControlador = new AyudasControlador($this->datos);
     }

@@ -24,6 +24,22 @@ class CuentasControlador {
             case "confirmaActualizarCuentas": //provisionalmente para trabajar con datatables
                 $this->confirmaActualizarCuentas();
                 break;
+
+            case "cancelarActualizarCuentas":
+                $this->cancelarActualizarCuentas();
+                break;
+                
+           /* case "mostrarInsertarCuentas": 
+                $this->mostrarInsertarCuentas();
+                break;
+                    
+            case "insertarCuentas": 
+                $this->insertarCuentas();
+                break;
+
+            case "cancelarInsertarCuentas":
+                $this->cancelarInsertarCuentas();
+                break;*/
         }
     }
 
@@ -62,6 +78,12 @@ class CuentasControlador {
         $_SESSION['mensaje'] = "Actualización realizada.";
         header("location:Controlador.php?ruta=listarCuentas");	
 
+    }
+
+    public function cancelarActualizarCuentas(){
+        session_start();
+        $_SESSION['mensaje'] = "Desistió de la actualización";
+        header("location:Controlador.php?ruta=listarCuentas");	
     }
 
 }

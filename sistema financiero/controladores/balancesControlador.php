@@ -24,6 +24,22 @@ class balancesControlador {
             case "confirmaActualizarBalances": //provisionalmente para trabajar con datatables
                 $this->confirmaActualizarBalances();
                 break;    
+
+            case "cancelarActualizarBalances":
+                $this->cancelarActualizarBalances();
+                break;
+                
+           /* case "mostrarInsertarBalances": 
+                $this->mostrarInsertarBalances();
+                break;
+                    
+            case "insertarBalances": 
+                $this->insertarBalances();
+                break;
+
+            case "cancelarInsertarBalances":
+                $this->cancelarInsertarBalances();
+                break;*/
         }
     }
 
@@ -61,6 +77,12 @@ public function confirmaActualizarBalances(){
         $_SESSION['mensaje'] = "Actualización realizada.";
         header("location:Controlador.php?ruta=listarBalances");	
 
+}
+
+public function cancelarActualizarBalances(){
+    session_start();
+    $_SESSION['mensaje'] = "Desistió de la actualización";
+    header("location:Controlador.php?ruta=listarBalances");	
 }
 
 
