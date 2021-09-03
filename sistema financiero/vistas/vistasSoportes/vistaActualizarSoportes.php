@@ -33,7 +33,7 @@ if (isset($_SESSION['actualizarDatosSoportes'])) {
                 </tr>              
                 <tr>            
                     <td>            
-                        <button type="reset" name="ruta" value="cancelarActualizarSoportes">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                        <button type="submit" name="ruta" value="cancelarActualizarSoportes">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarSoportes">Actualizar Soporte</button>
                     </td>
                 </tr>             

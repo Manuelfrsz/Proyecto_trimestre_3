@@ -42,8 +42,8 @@ class ControladorPrincipal {
 
             case "cancelarActualizarLibro":
                 $this->cancelarActualizarLibro();
-                break;	
-                
+                break;
+
             case "mostrarInsertarLibros":
                 $this->mostrarInsertarLibros();
                 break;
@@ -175,7 +175,22 @@ class ControladorPrincipal {
             case "confirmaActualizarMovimientos":
                 $this->confirmaActualizarMovimientos();
                 break;
-            
+
+            case "cancelarActualizarMovimientos":
+                $this->cancelarActualizarMovimientos();
+                break;
+    
+            case "mostrarInsertarMovimientos":
+                $this->mostrarInsertarMovimientos();
+                break;
+    
+            case "insertarMovimientos":
+                $this->insertarMovimientos();
+                break;
+    
+            case "cancelarInsertarMovimientos":
+                $this->cancelarInsertarMovimientos();
+                break;
 
             case "listarSoportes":
                 $this->listarSoportes();
@@ -187,6 +202,22 @@ class ControladorPrincipal {
 
             case "confirmaActualizarSoportes":
                 $this->confirmaActualizarSoportes();
+                break;
+
+            case "cancelarActualizarSoportes":
+                $this->cancelarActualizarSoportes();
+                break;
+    
+            case "mostrarInsertarSoportes":
+                $this->mostrarInsertarSoportes();
+                break;
+    
+            case "insertarSoportes":
+                $this->insertarSoportes();
+                break;
+    
+            case "cancelarInsertarSoportes":
+                $this->cancelarInsertarSoportes();
                 break;
 
 
@@ -393,6 +424,26 @@ class ControladorPrincipal {
         $movimientosControlador = new movimientosControlador($this->datos);
     }
 
+    public function cancelarActualizarMovimientos() {
+
+        $movimientosControlador = new movimientosControlador($this->datos);
+    }
+
+    public function mostrarInsertarMovimientos() {
+
+        $movimientosControlador = new movimientosControlador($this->datos);
+    }
+
+    public function insertarMovimientos() {
+
+        $movimientosControlador = new movimientosControlador($this->datos);
+    }
+
+    public function cancelarinsertarMovimientos() {
+
+        $movimientosControlador = new movimientosControlador($this->datos);
+    }
+
     public function listarSoportes() {
         $SoportesControlador = new SoportesControlador($this->datos);
     }
@@ -405,6 +456,27 @@ class ControladorPrincipal {
 
         $SoportesControlador = new SoportesControlador($this->datos);
     }
+
+    public function cancelarActualizarSoportes() {
+
+        $SoportesControlador = new SoportesControlador($this->datos);
+    }
+
+    public function mostrarInsertarSoportes() {
+
+        $SoportesControlador = new SoportesControlador($this->datos);
+    }
+
+    public function insertarSoportes() {
+
+        $SoportesControlador = new SoportesControlador($this->datos);
+    }
+
+    public function cancelarinsertarSoportes() {
+
+        $SoportesControlador = new SoportesControlador($this->datos);
+    }
+
 
     public function listarAyudas() {
         $AyudasControlador = new AyudasControlador($this->datos);
