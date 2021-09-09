@@ -48,7 +48,7 @@ session_start();
 	 <br/>
 	 <a href="Controlador.php?ruta=listarCuentas&pag=0">Listar Cuentas</a>
      <br/>
-     <a href="">Agregar Cuentas</a>   	 
+     <a href="Controlador.php?ruta=mostrarInsertarCuentas">Agregar Cuentas</a>   	 
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Balances
 	 <br/>

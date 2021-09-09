@@ -29,7 +29,7 @@ class CuentasControlador {
                 $this->cancelarActualizarCuentas();
                 break;
                 
-           /* case "mostrarInsertarCuentas": 
+            case "mostrarInsertarCuentas": 
                 $this->mostrarInsertarCuentas();
                 break;
                     
@@ -39,7 +39,7 @@ class CuentasControlador {
 
             case "cancelarInsertarCuentas":
                 $this->cancelarInsertarCuentas();
-                break;*/
+                break;
         }
     }
 
@@ -83,6 +83,62 @@ class CuentasControlador {
     public function cancelarActualizarCuentas(){
         session_start();
         $_SESSION['mensaje'] = "Desistió de la actualización";
+        header("location:Controlador.php?ruta=listarCuentas");	
+    }
+
+    public function mostrarInsertarCuentas(){
+
+
+
+        /*                 * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
+        $gestarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $registroUsuarios = $gestarUsuarios->seleccionarTodos();
+        /*                 * ************************************************************************* */
+
+        session_start();
+        $_SESSION['registroUsuarios'] = $registroUsuarios;
+        $registroUsuarios = null;
+
+        header("Location: principal.php?contenido=vistas/vistasCuentas/vistaInsertarCuentas.php");
+
+    }
+
+    public function insertarCuentas(){
+
+        $buscarCuentas = new CuentasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
+        //Se consulta si existe ya el registro
+        $CuentaHallada = $buscarCuentas->seleccionarId(array($this->datos['idCuentas']));
+        //Si no existe el libro en la base se procede a insertar ****  		
+        if (!$CuentaHallada['exitoSeleccionId']) {
+            $insertarCuentas = new CuentasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
+            $insertoCuentas = $insertarCuentas->insertar($this->datos);  //inserción de los campos en la tabla 
+            $resultadoInsercionCuentas = $insertoCuentas['resultado'];  //Traer el id con que quedó el libro de lo contrario la excepción o fallo  
+
+            session_start();
+           $_SESSION['mensaje'] = "Registrado " . $this->datos['idCuentas'] . " con éxito.  Agregada Nueva Cuenta con " . $resultadoInsercionCuentas;					
+            
+            header("location:Controlador.php?ruta=listarCuentas");
+            
+        }else{// Si existe se retornan los datos y se envía el mensaje correspondiente ****
+        
+            session_start();
+            $_SESSION['idCuentas'] = $this->datos['idCuentas'];
+            $_SESSION['cueTipo'] = $this->datos['cueTipo'];
+            $_SESSION['cueNombre'] = $this->datos['CueNombre'];
+            $_SESSION['CueSaldo'] = $this->datos['CueSaldo'];
+            $_SESSION['Usuarios_idUsuarios'] = $this->datos['Usuarios_idUsuarios'];					
+            
+            $_SESSION['mensaje'] = "   El código " . $this->datos['idCuentas'] . " ya existe en el sistema.";
+
+            header("location:Controlador.php?ruta=mostrarInsertarCuentas");					
+
+        }					
+    }
+
+    public function cancelarInsertarCuentas(){
+        session_start();
+        $_SESSION['mensaje'] = "Desistió de la insercion";
+        
         header("location:Controlador.php?ruta=listarCuentas");	
     }
 
