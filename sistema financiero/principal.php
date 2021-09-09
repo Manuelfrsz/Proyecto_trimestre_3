@@ -54,7 +54,7 @@ session_start();
 	 <br/>
 	 <a href="Controlador.php?ruta=listarBalances&pag=0">Listar Balances</a>
      <br/>
-     <a href="">Agregar Balances</a>   	 
+     <a href="Controlador.php?ruta=mostrarInsertarBalances">Agregar Balances</a>   	 
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Movimientos
 	 <br/>
