@@ -96,12 +96,19 @@ class movimientosControlador {
     public function mostrarInsertarMovimientos(){
 
 
-       /* $gestarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $gestarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
         $registroUsuarios = $gestarUsuarios->seleccionarTodos();
 
         session_start();
         $_SESSION['registroUsuarios'] = $registroUsuarios;
-        $registroUsuarios = null;*/
+        $registroUsuarios = null;
+
+        $gestarCuentas = new CuentasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $registroCuentas = $gestarCuentas->seleccionarTodos();
+
+        session_start();
+        $_SESSION['registroCuentas'] = $registroCuentas;
+        $registroCuentas = null;
 
         header("Location: principal.php?contenido=vistas/vistasMovimientos/vistaInsertarMovimientos.php");
 
@@ -110,36 +117,36 @@ class movimientosControlador {
     public function insertarMovimientos(){
 
         //Se instancia usuariosDAO para insertar
-        $buscarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
+        $buscarMovimientos = new MovimientosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
         //Se consulta si existe ya el registro
-        $UsuariosHallado = $buscarUsuarios->seleccionarId(array($this->datos['idUsuarios']));
+        $MovimientosHallado = $buscarMovimientos->seleccionarId(array($this->datos['idMovimientos']));
         //Si no existe el usuario en la base se procede a insertar ****  		
-        if (!$UsuariosHallado['exitoSeleccionId']){
-            $insertarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
-            $insertoUsuarios = $insertarUsuarios->insertar($this->datos);  //inserción de los campos en la tabla usuarios 
+        if (!$MovimientosHallado['exitoSeleccionId']){
+            $insertarMovimientos = new MovimientosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
+            $insertoMovimientos = $insertarMovimientos->insertar($this->datos);  //inserción de los campos en la tabla usuarios 
 
-            $resultadoInsercionUsuarios = $insertoUsuarios['resultado'];  //Traer el id con que quedó el usuario de lo contrario la excepción o fallo  
+            $resultadoInsercionMovimientos = $insertoMovimientos['resultado'];  //Traer el id con que quedó el usuario de lo contrario la excepción o fallo  
 
             session_start();
-           $_SESSION['mensaje'] = "Registrado " . $this->datos['idUsuarios'] . " con éxito.  Agregado Nuevo Usuario con " . $resultadoInsercionUsuarios;					
+           $_SESSION['mensaje'] = "Registrado " . $this->datos['idMovimientos'] . " con éxito.  Agregado Nuevo Movimiento con " . $resultadoInsercionMovimientos;					
             
-            header("location:Controlador.php?ruta=listarUsuarios");
+            header("location:Controlador.php?ruta=listarMovimientos");
             
         }else{// Si existe se retornan los datos y se envía el mensaje correspondiente ****
         
             session_start();
-            $_SESSION['idUsuarios'] = $this->datos['idUsuarios'];
-            $_SESSION['usuTipoDocumento'] = $this->datos['usuTipoDocumento'];
-            $_SESSION['usuDocumento'] = $this->datos['usuDocumento'];
-            $_SESSION['usuNombres'] = $this->datos['usuNombres'];
-            $_SESSION['usuApellidos'] = $this->datos['usuApellidos'];
-            $_SESSION['usuFechaNacimiento'] = $this->datos['usuFechaNacimiento'];
-            $_SESSION['usuEdad'] = $this->datos['usuEdad'];
-            $_SESSION['usuEstrato'] = $this->datos['usuEstrato'];					
+            $_SESSION['idMovimientos'] = $this->datos['idMovimientos'];
+            $_SESSION['movTipo'] = $this->datos['movTipo'];
+            $_SESSION['movNombre'] = $this->datos['movNombre'];
+            $_SESSION['movCuentaUso'] = $this->datos['movCuentaUso'];
+            $_SESSION['movValor'] = $this->datos['movValor'];
+            $_SESSION['movFecha'] = $this->datos['movFecha'];
+            $_SESSION['Usuarios_idUsuarios'] = $this->datos['Usuarios_idUsuarios'];
+            $_SESSION['Cuentas_idCuentas'] = $this->datos['Cuentas_idCuentas'];					
             
-            $_SESSION['mensaje'] = "   El código " . $this->datos['idUsuarios'] . " ya existe en el sistema.";
+            $_SESSION['mensaje'] = "   El código " . $this->datos['idMovmientos'] . " ya existe en el sistema.";
 
-            header("location:Controlador.php?ruta=InsertarUsuarios");					
+            header("location:Controlador.php?ruta=InsertarMovimientos");					
 
         }					
     }
@@ -148,7 +155,7 @@ class movimientosControlador {
         session_start();
         $_SESSION['mensaje'] = "Desistió de la insercion";
         
-        header("location:Controlador.php?ruta=listarUsuarios");	
+        header("location:Controlador.php?ruta=listarMovimientos");	
     }
 
 }

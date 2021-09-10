@@ -60,7 +60,7 @@ session_start();
 	 <br/>
 	 <a href="Controlador.php?ruta=listarMovimientos&pag=">Listar Movimientos</a>
      <br/>
-     <a href="">Agregar Movimientos</a>   	 
+     <a href="Controlador.php?ruta=mostrarInsertarMovimientos">Agregar Movimientos</a>   	 
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Soportes
 	 <br/>
