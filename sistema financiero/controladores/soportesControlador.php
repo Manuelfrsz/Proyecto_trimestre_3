@@ -90,50 +90,45 @@ class SoportesControlador {
     public function mostrarInsertarSoportes(){
 
 
-       /* $gestarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
-        $registroUsuarios = $gestarUsuarios->seleccionarTodos();
+        $gestarMovimientos = new MovimientosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $registroMovimientos = $gestarMovimientos->seleccionarTodos();
 
         session_start();
-        $_SESSION['registroUsuarios'] = $registroUsuarios;
-        $registroUsuarios = null;*/
+        $_SESSION['registroMovimientos'] = $registroMovimientos;
+        $registroMovimientos = null;
 
-        header("Location: principal.php?contenido=vistas/vistasMovimientos/vistaInsertarMovimientos.php");
+        header("Location: principal.php?contenido=vistas/vistasSoportes/vistaInsertarSoportes.php");
 
     }
 
     public function insertarSoportes(){
 
         //Se instancia usuariosDAO para insertar
-        $buscarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
+        $buscarSoportes = new SoportesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
         //Se consulta si existe ya el registro
-        $UsuariosHallado = $buscarUsuarios->seleccionarId(array($this->datos['idUsuarios']));
+        $SoporteHallado = $buscarSoportes->seleccionarId(array($this->datos['idSoportes']));
         //Si no existe el usuario en la base se procede a insertar ****  		
-        if (!$UsuariosHallado['exitoSeleccionId']){
-            $insertarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
-            $insertoUsuarios = $insertarUsuarios->insertar($this->datos);  //inserción de los campos en la tabla usuarios 
+        if (!$SoporteHallado['exitoSeleccionId']){
+            $insertarSoportes = new SoportesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
+            $insertoSoportes = $insertarSoportes->insertar($this->datos);  //inserción de los campos en la tabla Soportes
 
-            $resultadoInsercionUsuarios = $insertoUsuarios['resultado'];  //Traer el id con que quedó el usuario de lo contrario la excepción o fallo  
+            $resultadoInsercionSoportes = $insertoSoportes['resultado'];  //Traer el id con que quedó el usuario de lo contrario la excepción o fallo  
 
             session_start();
-           $_SESSION['mensaje'] = "Registrado " . $this->datos['idUsuarios'] . " con éxito.  Agregado Nuevo Usuario con " . $resultadoInsercionUsuarios;					
+           $_SESSION['mensaje'] = "Registrado " . $this->datos['idSoportes'] . " con éxito.  Agregado Nuevo Soporte con " . $resultadoInsercionSoportes;					
             
-            header("location:Controlador.php?ruta=listarUsuarios");
+            header("location:Controlador.php?ruta=listarSoportes");
             
         }else{// Si existe se retornan los datos y se envía el mensaje correspondiente ****
         
             session_start();
-            $_SESSION['idUsuarios'] = $this->datos['idUsuarios'];
-            $_SESSION['usuTipoDocumento'] = $this->datos['usuTipoDocumento'];
-            $_SESSION['usuDocumento'] = $this->datos['usuDocumento'];
-            $_SESSION['usuNombres'] = $this->datos['usuNombres'];
-            $_SESSION['usuApellidos'] = $this->datos['usuApellidos'];
-            $_SESSION['usuFechaNacimiento'] = $this->datos['usuFechaNacimiento'];
-            $_SESSION['usuEdad'] = $this->datos['usuEdad'];
-            $_SESSION['usuEstrato'] = $this->datos['usuEstrato'];					
+            $_SESSION['idSoportes'] = $this->datos['idSoportes'];
+            $_SESSION['sopNomComporbante'] = $this->datos['sopNomComporbante'];
+            $_SESSION['Movimientos_idMovimientos'] = $this->datos['Movimientos_idMovimientos'];					
             
-            $_SESSION['mensaje'] = "   El código " . $this->datos['idUsuarios'] . " ya existe en el sistema.";
+            $_SESSION['mensaje'] = "   El código " . $this->datos['idSoportes'] . " ya existe en el sistema.";
 
-            header("location:Controlador.php?ruta=InsertarUsuarios");					
+            header("location:Controlador.php?ruta=mostrarInsertarSoportes");					
 
         }					
     }
@@ -142,7 +137,7 @@ class SoportesControlador {
         session_start();
         $_SESSION['mensaje'] = "Desistió de la insercion";
         
-        header("location:Controlador.php?ruta=listarUsuarios");	
+        header("location:Controlador.php?ruta=listarSoportes");	
     }
 
 }

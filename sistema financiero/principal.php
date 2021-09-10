@@ -66,7 +66,7 @@ session_start();
 	 <br/>
 	 <a href="Controlador.php?ruta=listarSoportes&pag=0">Listar Soportes</a>
      <br/>
-     <a href="">Agregar Soportes</a>   	 
+     <a href="Controlador.php?ruta=mostrarInsertarSoportes">Agregar Soportes</a>   	 
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Calendarios
 	 <br/>
