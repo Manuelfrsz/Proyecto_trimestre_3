@@ -58,7 +58,7 @@ session_start();
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Movimientos
 	 <br/>
-	 <a href="Controlador.php?ruta=listarMovimientos&pag=">Listar Movimientos</a>
+	 <a href="Controlador.php?ruta=listarMovimientos&pag=0">Listar Movimientos</a>
      <br/>
      <a href="">Agregar Movimientos</a>   	 
 	 </div>
@@ -72,13 +72,13 @@ session_start();
 	 <br/>
 	 <a href="Controlador.php?ruta=listarCalendarios&pag=0">Listar Calendarios</a>
      <br/>
-     <a href="">Agregar Calendarios</a>   	 
+     <a href="Controlador.php?ruta=mostrarInsertarCalendarios">Agregar Calendarios</a>   	 
 	 </div>
 	 <div class="gestion">Menú Operaciones en Tabla Ayudas
 	 <br/>
 	 <a href="Controlador.php?ruta=listarAyudas&pag=0">Listar Ayudas</a>
      <br/>
-     <a href="">Agregar Ayudas</a>   	 
+     <a href="Controlador.php?ruta=mostrarInsertarAyudas">Agregar Ayudas</a>   	 
 	 </div>
      <div id="contenido">
 		 <br/>
