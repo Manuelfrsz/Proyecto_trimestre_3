@@ -7,8 +7,8 @@ if (isset($_SESSION['mensaje'])) {
 
 ?>
 <div class="panel-heading">
-    <h2 class="panel-title">Gestión de libros</h2>
-    <h3 class="panel-title">Inserción de Libros.</h3>
+    <h2 class="panel-title">Gestión de Usuarios</h2>
+    <h3 class="panel-title">Inserción de Usuarios.</h3>
 </div>
 <div>
     <fieldset>

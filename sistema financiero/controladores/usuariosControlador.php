@@ -88,13 +88,6 @@ class usuariosControlador{
     public function mostrarInsertarUsuarios(){
 
 
-       /* $gestarUsuarios = new usuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
-        $registroUsuarios = $gestarUsuarios->seleccionarTodos();
-
-        session_start();
-        $_SESSION['registroUsuarios'] = $registroUsuarios;
-        $registroUsuarios = null;*/
-
         header("Location: principal.php?contenido=vistas/vistasUsuarios/vistaInsertarUsuarios.php");
 
     }
@@ -104,9 +97,9 @@ class usuariosControlador{
         //Se instancia usuariosDAO para insertar
         $buscarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
         //Se consulta si existe ya el registro
-        $UsuariosHallado = $buscarUsuarios->seleccionarId(array($this->datos['idUsuarios']));
+        $UsuarioHallado = $buscarUsuarios->seleccionarId(array($this->datos['idUsuarios']));
         //Si no existe el usuario en la base se procede a insertar ****  		
-        if (!$UsuariosHallado['exitoSeleccionId']){
+        if (!$UsuarioHallado['exitoSeleccionId']){
             $insertarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
             $insertoUsuarios = $insertarUsuarios->insertar($this->datos);  //inserción de los campos en la tabla usuarios 
 
@@ -131,7 +124,7 @@ class usuariosControlador{
             
             $_SESSION['mensaje'] = "   El código " . $this->datos['idUsuarios'] . " ya existe en el sistema.";
 
-            header("location:Controlador.php?ruta=InsertarUsuarios");					
+            header("location:Controlador.php?ruta=mostrarInsertarUsuarios");					
 
         }					
     }

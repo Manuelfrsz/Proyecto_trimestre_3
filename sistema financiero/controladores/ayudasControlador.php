@@ -29,7 +29,7 @@ class AyudasControlador {
                 $this->cancelarActualizarAyudas();
                 break;
                 
-           /* case "mostrarInsertarAyudas": 
+            case "mostrarInsertarAyudas": 
                 $this->mostrarInsertarAyudas();
                 break;
                     
@@ -39,7 +39,7 @@ class AyudasControlador {
 
             case "cancelarInsertarAyudas":
                 $this->cancelarInsertarAyudas();
-                break;*/
+                break;
         }
     }
 
@@ -83,6 +83,59 @@ class AyudasControlador {
     public function cancelarActualizarAyudas(){
         session_start();
         $_SESSION['mensaje'] = "Desistió de la actualización";
+        header("location:Controlador.php?ruta=listarAyudas");	
+    }
+
+    public function mostrarInsertarAyudas(){
+
+        $gestarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $registroUsuarios = $gestarUsuarios->seleccionarTodos();
+
+        session_start();
+        $_SESSION['registroUsuarios'] = $registroUsuarios;
+        $registroUsuarios = null;
+
+
+        header("Location: principal.php?contenido=vistas/vistasAyudas/vistaInsertarAyudas.php");
+
+    }
+
+    public function insertarAyudas(){
+
+        
+        $buscarAyudas = new AyudasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);		
+        //Se consulta si existe ya el registro
+        $AyudaHallada = $buscarAyudas->seleccionarId(array($this->datos['idAyudas']));
+        //Si no existe el usuario en la base se procede a insertar ****  		
+        if (!$AyudaHallada['exitoSeleccionId']){
+            $insertarAyudas = new AyudasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);	
+            $insertoAyudas = $insertarAyudas->insertar($this->datos);  //inserción de los campos en la tabla Ayudas
+
+            $resultadoInsercionAyudas = $insertoAyudas['resultado'];  //Traer el id con que quedó el Ayuda de lo contrario la excepción o fallo  
+
+            session_start();
+           $_SESSION['mensaje'] = "Registrado " . $this->datos['idAyudas'] . " con éxito.  Agregado Nuevo Ayuda con " . $resultadoInsercionAyudas;					
+            
+            header("location:Controlador.php?ruta=listarAyudas");
+            
+        }else{// Si existe se retornan los datos y se envía el mensaje correspondiente ****
+        
+            session_start();
+            $_SESSION['ayuCodigoConsejo'] = $this->datos['ayuCodigoConsejo'];
+            $_SESSION['ayuConsejo'] = $this->datos['ayuConsejo'];
+            $_SESSION['Usuarios_idUsuarios'] = $this->datos['Usuarios_idUsuarios'];
+            					
+            $_SESSION['mensaje'] = "   El código " . $this->datos['idAyudas'] . " ya existe en el sistema.";
+
+            header("location:Controlador.php?ruta=mostrarInsertarAyudas");					
+
+        }					
+    }
+
+    public function cancelarInsertarAyudas(){
+        session_start();
+        $_SESSION['mensaje'] = "Desistió de la insercion";
+        
         header("location:Controlador.php?ruta=listarAyudas");	
     }
 
