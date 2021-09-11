@@ -10,7 +10,7 @@ class ayudasDAO extends ConBdMySql{
     
     public function seleccionarTodos(){
         $planconsulta = "select a.idAyudas, ayuConsejo ";
-        $planconsulta.="from ayudas a ";
+        $planconsulta.="from ayudas a where ayuEstado = 1 ";
     
 
         $registroAyudas = $this->conexion->prepare($planconsulta);

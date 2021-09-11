@@ -260,6 +260,10 @@ class ControladorPrincipal {
             case "cancelarInsertarAyudas":
                 $this->cancelarInsertarAyudas();
                 break;
+
+            case "eliminarAyudas":
+                $this->eliminarAyudas();
+                break;
         }
     }
 
@@ -534,6 +538,11 @@ class ControladorPrincipal {
     }
 
     public function cancelarinsertarAyudas() {
+
+        $AyudasControlador = new AyudasControlador($this->datos);
+    }
+
+    public function eliminarAyudas() {
 
         $AyudasControlador = new AyudasControlador($this->datos);
     }

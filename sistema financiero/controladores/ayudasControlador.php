@@ -40,6 +40,10 @@ class AyudasControlador {
             case "cancelarInsertarAyudas":
                 $this->cancelarInsertarAyudas();
                 break;
+
+            case "eliminarAyudas":
+                $this->eliminarAyudas();
+                break;
         }
     }
 
@@ -137,6 +141,14 @@ class AyudasControlador {
         $_SESSION['mensaje'] = "Desistió de la insercion";
         
         header("location:Controlador.php?ruta=listarAyudas");	
+    }
+
+    public function eliminarAyudas (){
+        $gestarAyudas = new AyudasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $consultaDeAyudas =$gestarAyudas->eliminarLogico(array($this->datos['idAct']));
+
+        header("location:Controlador.php?ruta=listarAyudas");	
+
     }
 
 }
