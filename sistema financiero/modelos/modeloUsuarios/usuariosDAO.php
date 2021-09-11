@@ -10,7 +10,7 @@ class UsuariosDAO extends ConBdMySql{
     
     public function seleccionarTodos(){
         $planconsulta = "select u.idUsuarios, u.usuTipoDocumento, u.usuDocumento, u.usuNombres, u.usuApellidos, u.usuFechaNacimiento, u.usuEdad, u.usuEstrato ";
-        $planconsulta.="from usuarios u ";
+        $planconsulta.="from usuarios u where usuEstado = 1 ";
         $planconsulta.="order by u.idUsuarios ASC; ";
     
 

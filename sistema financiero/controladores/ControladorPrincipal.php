@@ -79,6 +79,10 @@ class ControladorPrincipal {
             case "cancelarInsertarUsuarios":
                 $this->cancelarInsertarUsuarios();
                 break;
+
+            case "eliminarUsuarios":
+                $this->eliminarUsuarios();
+                break;
             
             case "listarBalances":
                 $this->listarBalances();
@@ -312,6 +316,11 @@ class ControladorPrincipal {
     }
 
     public function cancelarinsertarUsuarios() {
+
+        $usuariosControlador = new usuariosControlador($this->datos);
+    }
+
+    public function eliminarUsuarios() {
 
         $usuariosControlador = new usuariosControlador($this->datos);
     }

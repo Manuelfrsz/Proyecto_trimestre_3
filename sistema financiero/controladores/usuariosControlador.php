@@ -40,6 +40,10 @@ class usuariosControlador{
             case "cancelarInsertarUsuarios":
                 $this->cancelarInsertarUsuarios();
                 break;
+
+            case "eliminarUsuarios":
+                $this->eliminarUsuarios();
+                break;
         }
     }
 
@@ -134,6 +138,14 @@ class usuariosControlador{
         $_SESSION['mensaje'] = "Desistió de la insercion";
         
         header("location:Controlador.php?ruta=listarUsuarios");	
+    }
+
+    public function eliminarUsuarios (){
+        $gestarUsuarios = new UsuariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $consultaDeUsuarios =$gestarUsuarios->eliminarLogico(array($this->datos['idAct']));
+
+        header("location:Controlador.php?ruta=listarUsuarios");	
+
     }
 
 
