@@ -11,7 +11,7 @@ class calendariosDAO extends ConBdMySql{
     public function seleccionarTodos(){
         $planconsulta = " select c.idCalendarios, u.usuNombres, u.usuApellidos, c.calTipoPago, c.calNomPago, c.calFechaPago ";
         $planconsulta.=" from calendarios c ";
-        $planconsulta.=" join usuarios u on c.Usuarios_idUsuarios = u.idUsuarios ";
+        $planconsulta.=" join usuarios u on c.Usuarios_idUsuarios = u.idUsuarios where calEstado = 1 ";
     
 
         $registroCalendarios = $this->conexion->prepare($planconsulta);

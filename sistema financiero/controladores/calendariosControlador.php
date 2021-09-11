@@ -40,6 +40,10 @@ class calendariosControlador {
             case "cancelarInsertarCalendarios":
                 $this->cancelarInsertarCalendarios();
                 break;
+
+            case "eliminarCalendarios":
+                $this->eliminarCalendarios();
+                break;
         }
     }
 
@@ -139,6 +143,14 @@ class calendariosControlador {
         $_SESSION['mensaje'] = "Desistió de la insercion";
         
         header("location:Controlador.php?ruta=listarCalendarios");	
+    }
+
+    public function eliminarCalendarios (){
+        $gestarCalendarios = new CalendariosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $consultaDeCalendarios =$gestarCalendarios->eliminarLogico(array($this->datos['idAct']));
+
+        header("location:Controlador.php?ruta=listarCalendarios");	
+
     }
 
 }

@@ -172,6 +172,10 @@ class ControladorPrincipal {
                 $this->cancelarInsertarCalendarios();
                 break;
 
+            case "eliminarCalendarios":
+                $this->eliminarCalendarios();
+                break;
+
             case "listarMovimientos":
                 $this->listarMovimientos();
                 break;
@@ -425,6 +429,11 @@ class ControladorPrincipal {
     }
 
     public function cancelarinsertarCalendarios() {
+
+        $CalendariosControlador = new CalendariosControlador($this->datos);
+    }
+
+    public function eliminarCalendarios() {
 
         $CalendariosControlador = new CalendariosControlador($this->datos);
     }
