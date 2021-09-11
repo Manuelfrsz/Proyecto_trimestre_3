@@ -15,7 +15,7 @@ class movimientosDAO extends ConBdMySql{
         c.idCuentas, c.cueTipo, c.cueSaldo ";
         $planconsulta.="FROM movimientos m ";
         $planconsulta.="JOIN usuarios u on m.Usuarios_idUsuarios = u.idUsuarios "; 
-        $planconsulta.="JOIN cuentas c on m.Cuentas_idCuentas = c.idCuentas ";
+        $planconsulta.="JOIN cuentas c on m.Cuentas_idCuentas = c.idCuentas where movEstado = 1 ";
         $planconsulta.="order by m.idMovimientos ASC ";
 
         $registroMovimientos = $this->conexion->prepare($planconsulta);

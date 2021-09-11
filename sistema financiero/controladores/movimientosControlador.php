@@ -41,6 +41,10 @@ class movimientosControlador {
             case "cancelarInsertarMovimientos":
                 $this->cancelarInsertarMovimientos();
                 break;
+
+            case "eliminarMovimientos":
+                $this->eliminarMovimientos();
+                break;
             
         }
     }
@@ -156,6 +160,14 @@ class movimientosControlador {
         $_SESSION['mensaje'] = "Desistió de la insercion";
         
         header("location:Controlador.php?ruta=listarMovimientos");	
+    }
+
+    public function eliminarMovimientos (){
+        $gestarMovimientos = new MovimientosDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $consultaDeMovimientos =$gestarMovimientos->eliminarLogico(array($this->datos['idAct']));
+
+        header("location:Controlador.php?ruta=listarMovimientos");	
+
     }
 
 }

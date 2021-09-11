@@ -204,6 +204,10 @@ class ControladorPrincipal {
                 $this->cancelarInsertarMovimientos();
                 break;
 
+            case "eliminarMovimientos":
+                $this->eliminarMovimientos();
+                break;
+
             case "listarSoportes":
                 $this->listarSoportes();
                 break;
@@ -231,7 +235,6 @@ class ControladorPrincipal {
             case "cancelarInsertarSoportes":
                 $this->cancelarInsertarSoportes();
                 break;
-
 
             case "listarAyudas":
                 $this->listarAyudas();
@@ -473,6 +476,11 @@ class ControladorPrincipal {
     public function cancelarinsertarMovimientos() {
 
         $movimientosControlador = new movimientosControlador($this->datos);
+    }
+
+    public function eliminarMovimientos() {
+
+        $MovimientosControlador = new MovimientosControlador($this->datos);
     }
 
     public function listarSoportes() {
