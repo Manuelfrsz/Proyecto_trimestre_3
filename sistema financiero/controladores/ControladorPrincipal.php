@@ -135,6 +135,10 @@ class ControladorPrincipal {
             case "cancelarInsertarCuentas":
                 $this->cancelarInsertarCuentas();
                 break;
+
+            case "eliminarCuentas":
+                $this->eliminarCuentas();
+                break;
                 
             case "listarCalendarios":
                 $this->listarCalendarios();
@@ -374,6 +378,11 @@ class ControladorPrincipal {
     }
 
     public function cancelarinsertarCuentas() {
+
+        $CuentasControlador = new CuentasControlador($this->datos);
+    }
+
+    public function eliminarCuentas() {
 
         $CuentasControlador = new CuentasControlador($this->datos);
     }

@@ -40,6 +40,10 @@ class CuentasControlador {
             case "cancelarInsertarCuentas":
                 $this->cancelarInsertarCuentas();
                 break;
+
+            case "eliminarCuentas":
+                $this->eliminarCuentas();
+                break;
         }
     }
 
@@ -140,6 +144,14 @@ class CuentasControlador {
         $_SESSION['mensaje'] = "Desistió de la insercion";
         
         header("location:Controlador.php?ruta=listarCuentas");	
+    }
+
+    public function eliminarCuentas (){
+        $gestarCuentas = new CuentasDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $consultaDeCuentas =$gestarCuentas->eliminarLogico(array($this->datos['idAct']));
+
+        header("location:Controlador.php?ruta=listarCuentas");	
+
     }
 
 }
