@@ -8,6 +8,7 @@ include_once PATH . 'controladores/movimientosControlador.php';
 include_once PATH . 'controladores/calendariosControlador.php';
 include_once PATH . 'controladores/soportesControlador.php';
 include_once PATH . 'controladores/ayudasControlador.php';
+include_once PATH . 'controladores/Usuario_sControlador.php';
 
 class ControladorPrincipal {
 
@@ -266,6 +267,19 @@ class ControladorPrincipal {
 
             case "eliminarAyudas":
                 $this->eliminarAyudas();
+                break;
+
+            case "gestionDeRegistro":
+                 $this->gestionDeRegistro();
+                break;
+                    
+            case "gestionDeAcceso":
+                $this->gestionDeAcceso();
+                break;
+
+            case "cerrarSesion":
+
+                $this->cerrarSesion();
                 break;
         }
     }
@@ -553,6 +567,21 @@ class ControladorPrincipal {
     public function eliminarAyudas() {
 
         $AyudasControlador = new AyudasControlador($this->datos);
+    }
+
+    public function gestionDeRegistro() {
+
+        $usuario_sControlador = new Usuario_sControlador($this->datos);
+    }
+	
+	    public function gestionDeAcceso() {
+
+        $usuario_sControlador = new Usuario_sControlador($this->datos);
+    }
+
+    public function cerrarSesion() {
+
+        $usuario_sControlador = new Usuario_sControlador($this->datos);
     }
 }
 
