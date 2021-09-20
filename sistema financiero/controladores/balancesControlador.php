@@ -40,6 +40,10 @@ class balancesControlador {
             case "cancelarInsertarBalances":
                 $this->cancelarInsertarBalances();
                 break;
+
+            case "eliminarBalances":
+                $this->eliminarBalances();
+                break;
         }
     }
 
@@ -138,6 +142,14 @@ class balancesControlador {
         $_SESSION['mensaje'] = "Desistió de la insercion";
         
         header("location:Controlador.php?ruta=listarBalances");	
+    }
+
+    public function eliminarBalances (){
+        $gestarBalances = new BalancesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $consultaDeBalances =$gestarBalances->eliminarLogico(array($this->datos['idAct']));
+
+        header("location:Controlador.php?ruta=listarBalances");	
+
     }
 
 

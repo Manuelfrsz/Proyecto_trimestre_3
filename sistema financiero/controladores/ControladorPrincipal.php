@@ -112,6 +112,10 @@ class ControladorPrincipal {
             case "cancelarInsertarBalances":
                 $this->cancelarInsertarBalances();
                 break;
+
+            case "eliminarBalances":
+                $this->eliminarBalances();
+                break;
                 
             case "listarCuentas":
                 $this->listarCuentas();
@@ -379,6 +383,11 @@ class ControladorPrincipal {
     }
 
     public function cancelarinsertarBalances() {
+
+        $BalancesControlador = new BalancesControlador($this->datos);
+    }
+
+    public function eliminarBalances() {
 
         $BalancesControlador = new BalancesControlador($this->datos);
     }

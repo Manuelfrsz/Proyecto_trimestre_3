@@ -11,7 +11,7 @@ class balancesDAO extends ConBdMySql{
     public function seleccionarTodos(){
         $planconsulta = "select u.idUsuarios, u.usuTipoDocumento, u.usuDocumento, u.usuNombres, u.usuApellidos, u.usuEstrato, b.idBalances, b.balTotal ";
         $planconsulta.="from balances b ";
-        $planconsulta.="join usuarios u on b.Usuarios_idUsuarios = u.idUsuarios ";
+        $planconsulta.="join usuarios u on b.Usuarios_idUsuarios = u.idUsuarios where balEstado = 1 ";
         $planconsulta.="order by u.idusuarios ASC; ";
     
 
