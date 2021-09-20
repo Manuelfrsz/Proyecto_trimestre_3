@@ -240,6 +240,10 @@ class ControladorPrincipal {
             case "cancelarInsertarSoportes":
                 $this->cancelarInsertarSoportes();
                 break;
+            
+            case "eliminarSoportes":
+                $this->eliminarSoportes();
+                break;
 
             case "listarAyudas":
                 $this->listarAyudas();
@@ -539,6 +543,10 @@ class ControladorPrincipal {
         $SoportesControlador = new SoportesControlador($this->datos);
     }
 
+    public function eliminarSoportes() {
+
+        $SoportesControlador = new SoportesControlador($this->datos);
+    }
 
     public function listarAyudas() {
         $AyudasControlador = new AyudasControlador($this->datos);

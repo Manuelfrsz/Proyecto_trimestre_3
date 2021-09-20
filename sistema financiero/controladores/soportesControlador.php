@@ -40,6 +40,10 @@ class SoportesControlador {
             case "cancelarInsertarSoportes":
                 $this->cancelarInsertarSoportes();
                 break;
+            
+            case "eliminarSoportes":
+                $this->eliminarSoportes();
+                break;
         }
     }
 
@@ -138,6 +142,14 @@ class SoportesControlador {
         $_SESSION['mensaje'] = "Desistió de la insercion";
         
         header("location:Controlador.php?ruta=listarSoportes");	
+    }
+
+    public function eliminarSoportes (){
+        $gestarSoportes = new SoportesDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+        $consultaDeSoportes =$gestarSoportes->eliminarLogico(array($this->datos['idAct']));
+
+        header("location:Controlador.php?ruta=listarSoportes");	
+
     }
 
 }

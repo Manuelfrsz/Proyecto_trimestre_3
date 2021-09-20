@@ -11,7 +11,7 @@ class SoportesDAO extends ConBdMySql{
     public function seleccionarTodos(){
         $planconsulta = "select s.idSoportes, s.sopNomComprobante, m.movTipo, m.movCuentaUso, m.movValor, m.movFecha ";
         $planconsulta.="from soportes s ";
-        $planconsulta.="join movimientos m on s.Movimientos_idMovimientos = m.idMovimientos ";
+        $planconsulta.="join movimientos m on s.Movimientos_idMovimientos = m.idMovimientos where sopEstado = 1 ";
         $planconsulta.="order by s.idSoportes ASC; ";
     
 
