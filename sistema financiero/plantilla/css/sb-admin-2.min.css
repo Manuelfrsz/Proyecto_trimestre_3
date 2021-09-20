@@ -6832,7 +6832,7 @@ button.bg-dark:hover {
 }
 
 .bg-white {
-    background-color: #fff!important
+    background-color: #ffffff!important
 }
 
 .bg-transparent {
@@ -10149,7 +10149,7 @@ a:focus {
 }
 
 #wrapper #content-wrapper {
-    background-color: #f8f9fc;
+    background-color: #f0e5d9;
     width: 100%;
     overflow-x: hidden
 }
@@ -11036,7 +11036,7 @@ a:focus {
 }
 
 .sidebar-dark .sidebar-brand {
-    color: #fff
+    color: rgb(0, 0, 0)
 }
 
 .sidebar-dark hr.sidebar-divider {
@@ -11048,7 +11048,7 @@ a:focus {
 }
 
 .sidebar-dark .nav-item .nav-link {
-    color: rgba(255, 255, 255, .8)
+    color: rgba(0, 0, 0, 0.8)
 }
 
 .sidebar-dark .nav-item .nav-link i {

@@ -10149,7 +10149,7 @@ a:focus {
 }
 
 #wrapper #content-wrapper {
-    background-color: #f8f9fc;
+    background-color: #dbdbc6;
     width: 100%;
     overflow-x: hidden;
 }
@@ -11036,7 +11036,7 @@ a:focus {
 }
 
 .sidebar-dark .sidebar-brand {
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 
 .sidebar-dark hr.sidebar-divider {

@@ -54,22 +54,16 @@ if (isset($_SESSION['mensaje'])) {
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="principal.php">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
                     <div class="sidebar-brand-text mx-3">Asistente financiero</div>
+                    
                 </a>
 
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
-
-                <!-- Nav Item - Dashboard -->
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
-                </li>
 
                 <!-- Divider -->
                 <hr class="sidebar-divider">
@@ -207,24 +201,12 @@ if (isset($_SESSION['mensaje'])) {
 
                 <!-- Nav Item - Contactenos -->
                 <li class="nav-item">
-                    <a class="nav-link" href="informacion.php">
+                    <a class="nav-link" href="plantilla/informacion.php">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Contactenos</span></a>
                 </li>
 
-                <!-- Nav Item - Charts -->
-                <li class="nav-item">
-                    <a class="nav-link" href="plantilla/charts.html">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></a>
-                </li>
-
-                <!-- Nav Item - Tables -->
-                <li class="nav-item">
-                    <a class="nav-link" href="plantilla/tables.html">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
-                </li>
+                
 
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
@@ -414,6 +396,9 @@ if (isset($_SESSION['mensaje'])) {
 
                         <!-- Page Heading -->
                         <h1 class="h3 mb-4 text-gray-800">Asistente Financiero</h1>
+                        
+
+                        
 <?php
 if (isset($_GET['contenido'])) {
     include($_GET['contenido']);
@@ -430,7 +415,7 @@ if (isset($_GET['contenido'])) {
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
+                            <span>Asistente  Financiero</span>
                         </div>
                     </div>
                 </footer>
@@ -493,8 +478,7 @@ if (isset($_GET['contenido'])) {
                         });
         </script>     
         <!--**************************************** -->
-        <!--**************************************** -->   
-		
+        <!--**************************************** -->   	
 
     </body>
 
