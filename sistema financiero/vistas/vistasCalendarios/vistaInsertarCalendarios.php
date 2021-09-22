@@ -33,10 +33,11 @@ if (isset($_SESSION['mensaje'])) {
                    </td>                       
                </tr>
                 <tr>
-                    <td>                  
-                        <input class="form-control" placeholder="Tipo de Pago" name="calTipoPago" type="text"  required="required" 
-						value=<?php if(isset($_SESSION['calTipoPago'])) echo $_SESSION['calTipoPago']; unset($_SESSION['calTipoPago']);  ?>>
-                        <div></div> 
+                    <td>                
+                        <select id="calTipoPago" name="calTipoPago">    
+                            <option value=<?php if(isset($_SESSION['calTipoPago'])) echo $_SESSION['calTipoPago']; unset($_SESSION['calTipoPago']);  ?> ingreso>1 - ingreso</option>
+                            <option value=<?php if(isset($_SESSION['calTipoPago'])) echo $_SESSION['calTipoPago']; unset($_SESSION['calTipoPago']);  ?> egreso>2 - egreso</option>
+                        </select>                               
                     </td>
                 </tr>                  
                 <tr>

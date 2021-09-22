@@ -17,9 +17,13 @@ if (isset($_SESSION['mensaje'])) {
 
                 <tr>
                     <td>                
-                        <input class="form-control" placeholder="tipo De Documento" name="usuTipoDocumento" type="text"   required="required" 
-						value=<?php if(isset($_SESSION['usuTipoDocumento'])) echo $_SESSION['usuTipoDocumento']; unset($_SESSION['usuTipoDocumento']);  ?>>
-                        <div></div>                              
+                    <select id="usuTipoDocumento" name="usuTipoDocumento">    
+                            <option value=<?php if(isset($_SESSION['usuTipoDocumento'])) echo $_SESSION['usuTipoDocumento']; unset($_SESSION['usuTipoDocumento']);  ?> CC>1 - Cedula de Ciudadania</option>
+                            <option value=<?php if(isset($_SESSION['usuTipoDocumento'])) echo $_SESSION['usuTipoDocumento']; unset($_SESSION['usuTipoDocumento']);  ?> TI>2 - Tarjeta de Identidad</option>
+                            <option value=<?php if(isset($_SESSION['usuTipoDocumento'])) echo $_SESSION['usuTipoDocumento']; unset($_SESSION['usuTipoDocumento']);  ?> Pasaporte_nacional>3 - Pasaporte nacional</option>
+                            <option value=<?php if(isset($_SESSION['usuTipoDocumento'])) echo $_SESSION['usuTipoDocumento']; unset($_SESSION['usuTipoDocumento']);  ?> Pasaporte_extranjero>4 - Pasaporte extranjero</option>
+                            <option value=<?php if(isset($_SESSION['usuTipoDocumento'])) echo $_SESSION['usuTipoDocumento']; unset($_SESSION['usuTipoDocumento']);  ?> Tarjeta_de_residencia>5 - Tarjeta de residencia</option>
+                        </select>                               
                     </td>
                 </tr>
                 <tr>
@@ -58,10 +62,15 @@ if (isset($_SESSION['mensaje'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td>                  
-                        <input class="form-control" placeholder="Estrato" name="usuEstrato" type="text"  required="required" 
-						value=<?php if(isset($_SESSION['usuEstrato'])) echo $_SESSION['usuEstrato']; unset($_SESSION['usuEstrato']);  ?>>
-                        <div></div>        
+                <td>                
+                    <select id="usuEstrato" name="usuEstrato">    
+                            <option value=<?php if(isset($_SESSION['usuEstrato'])) echo $_SESSION['usuEstrato']; unset($_SESSION['usuEstrato']);  ?> 1>Estrato 1</option>
+                            <option value=<?php if(isset($_SESSION['usuEstrato'])) echo $_SESSION['usuEstrato']; unset($_SESSION['usuEstrato']);  ?> 2>Estrato 2</option>
+                            <option value=<?php if(isset($_SESSION['usuEstrato'])) echo $_SESSION['usuEstrato']; unset($_SESSION['usuEstrato']);  ?> 3>Estrato 3</option>
+                            <option value=<?php if(isset($_SESSION['usuEstrato'])) echo $_SESSION['usuEstrato']; unset($_SESSION['usuEstrato']);  ?> 4>Estrato 4</option>
+                            <option value=<?php if(isset($_SESSION['usuEstrato'])) echo $_SESSION['usuEstrato']; unset($_SESSION['usuEstrato']);  ?> 5>Estrato 5</option>
+                            <option value=<?php if(isset($_SESSION['usuEstrato'])) echo $_SESSION['usuEstrato']; unset($_SESSION['usuEstrato']);  ?> 6>Estrato 6</option>
+                        </select>                               
                     </td>
                 </tr>              
                 <tr>

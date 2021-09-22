@@ -50,9 +50,10 @@ if (isset($_SESSION['mensaje'])) {
                 </tr>
                 <tr>
                     <td>                
-                        <input class="form-control" placeholder="TIPO DE MOVIMIENTO" name="movTipo" type="text"   required="required" 
-						value=<?php if(isset($_SESSION['movTipo'])) echo $_SESSION['movTipo']; unset($_SESSION['movTipo']);  ?>>
-                        <div></div>                              
+                    <select id="movTipo" name="movTipo">    
+                            <option value=<?php if(isset($_SESSION['movtipo'])) echo $_SESSION['movTipo']; unset($_SESSION['movTipo']);  ?> ingreso>1 - ingreso</option>
+                            <option value=<?php if(isset($_SESSION['movtipo'])) echo $_SESSION['movTipo']; unset($_SESSION['movTipo']);  ?> egreso>2 - egreso</option>
+                        </select>                               
                     </td>
                 </tr>
                 <tr>
